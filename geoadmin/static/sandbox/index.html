@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+
+    <link href="lib/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <link href="ga3.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+
+    <div class="wrapper">
+      <div class="header navbar navbar-fixed-top">
+        <div class="logo pull-left">
+          <img src="http://placehold.it/320x89" style="height: 89px; width: 320px;">
+        </div>
+
+        <button class="toggle-wrapper btn navbar-btn pull-left" data-toggle="button">
+          <i class="icon-ellipsis-vertical"></i>
+        </button>
+
+        <form class="map-search navbar-form pull-left">
+          <input type="search">
+        </form>
+      </div>
+
+      <div class="map" id="map"></div>
+
+      <div class="footer navbar navbar-fixed-bottom">
+        <div id="ol-scaleline" class="pull-left"></div>
+      </div>
+
+
+    </div>
+
+    <div class="pulldown">
+      <div class="content collapse in">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent=".pulldown .content" href="#collapseOne">
+              Link versenden
+            </a>
+          </div>
+          <div id="collapseOne" class="collapse">
+            <div class="accordion-inner">
+              <p>
+                Anim pariatur cliche reprehenderit, enim eiusmod high
+                life accusamus terry richardson ad squid. 3 wolf moon
+                officia aute, non cupidatat skateboard dolor
+                brunch. Food truck quinoa nesciunt laborum
+                eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a
+                bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft
+                beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice
+                lomo. Leggings occaecat craft beer farm-to-table, raw
+                denim aesthetic synth nesciunt you probably haven't
+                heard of them accusamus labore sustainable VHS.
+              <p>
+            </div>
+          </div>
+        </div>
+        <div class="print accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent=".pulldown .content" href="#collapseTwo">
+              Drucken
+            </a>
+          </div>
+          <div id="collapseTwo" class="collapse">
+            <div class="accordion-inner">
+              <form>
+                <div class="btn-group" data-toggle="buttons-radio">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="orientation" value="portrait">Hochformat
+                  </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="orientation" value="landscape">Querformat
+                  </label>
+                </div>
+                <div>
+                  <label>Masstab</label>
+                  <select></select>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox">
+                    Legende hinzufügen
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Drucken</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent=".pulldown .content" href="#collapseThree">
+              Kartenfunktionen
+            </a>
+          </div>
+          <div id="collapseThree" class="collapse">
+            <div class="accordion-inner">
+              <div></div>
+              <div id="layertree"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="button" data-toggle="collapse" data-target=".pulldown .content" class="toggle btn btn-default">
+          <span class="pulldown-close"><i class="icon-chevron-up"></i> Menü schliessen</span>
+          <span class="pulldown-open"><i class="icon-chevron-down"></i> Menü öffnen</span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="modal fade legend">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary"><i class="icon-print"> Print</i></button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/hogan" id="layerlist">
+      <ul class="list-group layertree">
+        {{#layers}}
+        <li class="list-group-item">
+          <span class="pull-right">
+            <!-- <i class="icon-sort-up"></i> -->
+            <!-- <i class="icon-sort-down"></i> -->
+            <a data-toggle="modal" data-target=".legend" href="http://api.geo.admin.ch/layers/{{identifier}}?mode=legend&print=true"><i class="icon-info-sign"></i></a>
+            <!-- <i class="icon-info-sign"></i> -->
+            <i class="icon-reorder"></i>
+          </span>
+          <!-- <label><input type="checkbox">{{title}}</label> -->
+          <div class="checkbox">
+            <label><input type="checkbox">{{title}}</label>
+          </div>
+        </li>
+        {{/layers}}
+      </ul>
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="lib/jquery-ui-1.10.3.sortable.min.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/hogan.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/defs/EPSG21781.js" type="text/javascript"></script>
+    <script src="lib/ol.js"></script>
+    <script src="ga3.js"></script>
+    <script>
+      // see https://github.com/twitter/bootstrap/pull/7935#issuecomment-18513516
+      $(document).on('hide.bs.modal', function(event) {
+        $(event.target).removeData();
+      })
+
+      $(document).on('click.ga.button', '.toggle-wrapper', function(event) {
+        if ($(event.target).hasClass('active')) {
+          $('.wrapper').addClass('open');
+        } else {
+          $('.wrapper').removeClass('open');
+        }
+      });
+
+    </script>
+
+  </body>
+</html>
