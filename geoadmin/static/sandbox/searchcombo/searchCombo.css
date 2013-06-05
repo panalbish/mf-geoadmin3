@@ -1,0 +1,78 @@
+#usegeo {
+  margin: 10px;
+  margin-bottom: 0px;
+}
+
+#search {
+  width: 666px;
+  margin-bottom: 0px;
+}
+
+#search-container {
+  z-index: 1000000;
+}
+
+#map {
+  width: 666px;
+  height: 666px;
+  border: 1px solid grey;
+  padding: 0 0 0 0;
+  margin: 10px !important;
+  z-index: 0 !important;
+}
+
+.pull-right {
+  float: right;
+  font-size: 75%;
+}
+
+.entry-info {
+  font-size: 75%;
+  font-weight: bold;
+}
+
+/* typeahead specifics */
+
+.tt-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10000;
+  display: none;
+  float: left;
+  min-width: 600px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding-box;
+          background-clip: padding-box;
+}
+
+.tt-dropdown-menu {
+  width: 100%;
+  font-size: 85%;
+}
+
+.tt-dropdown-menu > div {
+  padding: 4px 12px;
+}
+
+.tt-suggestion {
+  padding: 4px 12px;
+}
+
+.tt-is-under-cursor {
+  background-color: #eee;
+}
+
+.tt-hint {
+  color: #777 !important;
+}
+
