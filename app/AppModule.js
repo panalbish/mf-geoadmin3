@@ -2,7 +2,8 @@
   var appModule = angular.module('app', [
     'app.map',
     'app.backgroundlayerselector',
-    'app.print'
+    'app.print',
+    'app.searchcombo'
   ]);
 
   // Configure the $http service to remove the X-Requested-With
