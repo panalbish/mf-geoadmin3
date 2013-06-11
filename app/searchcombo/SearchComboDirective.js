@@ -15,10 +15,11 @@
           link: function(scope, element, attrs) {
             $(element).typeahead([{
               name: 'allinone',
+              limit: 10,
               header: '<strong> ai1 search:</strong>',
               valueKey: 'attrs',
               template: function(context) {
-                  return '<div>' + context.attrs.detail + '<span class="entry-info"> (' + context.attrs.detail_datasource + ' - ' + context.weight + ')</span> <span class="pull-right">' + context.attrs.geom_quadindex + '</span></div>'
+                  return '<div>' + context.attrs.detail + '<span class="search-info"> (' + context.attrs.detail_datasource + ' - ' + context.weight + ')</span> <span class="search-right">' + context.attrs.geom_quadindex + '</span></div>'
               },
               remote: {
                 url: 'http://mf-chsdi0t.bgdi.admin.ch/ltjeg/wsgi/ai1?query=%QUERY',
@@ -34,10 +35,11 @@
               }
             }, {
               name: 'swisssearch',
+              limit: 10,
               header: '<strong>swisssearch:</strong>',
               valueKey: 'label',
               template: function(context) {
-                return '<div>' + context.label + '<small class="pull-right">(' +
+                return '<div>' + context.label + '<small class="search-right">(' +
                   context.service + ')</small></div>';
               },
               remote: {
@@ -52,6 +54,7 @@
               }
             }, {
               name: 'layers',
+              limit: 10,
               header: '<strong>swisstopo layers:</strong>',
               valueKey: 'kurzbezeichnung',
               template: function(context) {
@@ -64,7 +67,7 @@
                 }
               }
             }]).on('typeahead:selected', function(event, datum) {
-              debugger;
+              console.log('typeahead:selected called');
             }).on('typeahead:opened', function() {
               $('.tt-dropdown-menu').css('z-index', '10000');
             });
