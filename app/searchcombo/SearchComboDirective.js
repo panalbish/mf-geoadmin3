@@ -66,8 +66,9 @@
                   return response.results;
                 }
               }
-            }]).on('typeahead:selected', function(event, datum) {
-              console.log('typeahead:selected called');
+            }]).on('typeahead:mouseOver', function(event, datum) {
+              console.log('typeahead:Over called');
+              console.log(datum);
             }).on('typeahead:opened', function() {
               $('.tt-dropdown-menu').css('z-index', '10000');
             });
