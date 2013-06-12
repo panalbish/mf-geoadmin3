@@ -11,7 +11,11 @@
       var ext = map.getView().calculateExtent(map.getSize());
       return 'bbox=' + ext[0] + ',' + ext[2] + ',' +
           ext[1] + ',' + ext[3];
-    }
+    };
+
+    var _handleMouseOver = function (datum) {
+//      console.log(datum);
+    };
 
     return {
       restrict: 'A',
@@ -19,6 +23,13 @@
       scope: {
         map: '=appSearchComboMap'
       },
+      /*
+      template: '<div><input type="text" class="search-query" id="search">' +
+          //TODO: review -> not sure about this div here at this place
+          '<div style="display: none;"' +
+          '<div id=searchComboPopup"></div>' +
+          '</div></div>',
+      */
       template: '<input type="text" class="search-query" id="search">',
       link: function(scope, element, attrs) {
         var map = $parse(attrs.appSearchComboMap)(scope);
@@ -82,8 +93,7 @@
             }
           }
         }]).on('typeahead:mouseOver', function(event, datum) {
-          console.log('typeahead:Over called');
-          console.log(datum);
+          _handleMouseOver(datum);
         }).on('typeahead:opened', function() {
           $('.tt-dropdown-menu').css('z-index', '10000');
         });
