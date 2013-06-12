@@ -1,6 +1,7 @@
 @import "bootstrap/bootstrap.less";
 
 @headerHeight: 89;
+@headerBgColor: rgba(255, 255, 255, 0.9);
 
 body {
     overflow: hidden;
@@ -22,7 +23,7 @@ body {
 
 .header {
     height: unit(@headerHeight, px);
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: @headerBgColor;
     .box-shadow(6px 6px 12px rgba(0, 0, 0, 0.175));
 }
 
@@ -107,8 +108,7 @@ body {
   padding: 5px 0;
   margin: 2px 0 0;
   list-style: none;
-/*  background-color: #ffffff; */
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: @headerBgColor;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;

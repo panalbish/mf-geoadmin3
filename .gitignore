@@ -35,3 +35,6 @@ nosetests.xml
 # Jetbrains
 .idea
 *.iml
+
+#vim temp files
+*.swp

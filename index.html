@@ -9,7 +9,8 @@
     <div class="wrapper">
       <div class="header navbar navbar-fixed-top">
         <form class="navbar-form pull-left">
-          <input type="text" class="search-query" id="search" app-search="dummy">
+          <div x-app-search-combo
+               x-app-search-combo-map="map"></div>
         </form>
         <form class="navbar-form pull-right"
               ng-controller="BackgroundLayerSelectorController">
