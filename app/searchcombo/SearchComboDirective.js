@@ -23,18 +23,15 @@
       scope: {
         map: '=appSearchComboMap'
       },
-      /*
       template: '<div><input type="text" class="search-query" id="search">' +
           //TODO: review -> not sure about this div here at this place
           '<div style="display: none;"' +
           '<div id=searchComboPopup"></div>' +
           '</div></div>',
-      */
-      template: '<input type="text" class="search-query" id="search">',
       link: function(scope, element, attrs) {
         var map = $parse(attrs.appSearchComboMap)(scope);
-
-        $(element).typeahead([{
+        
+        $(element).find('input').typeahead([{
           name: 'allinone',
           limit: SEARCH_LIMIT,
           header: '<strong> ai1 search:</strong>',
