@@ -1,7 +1,9 @@
 (function() {
-  var searchComboModule = angular.module('app.searchcombo');
+  goog.provide('ga_searchcombo_directive');
 
-  searchComboModule.directive('appSearchCombo', 
+  var module = angular.module('ga_searchcombo_directive', []);
+
+  module.directive('gaSearchCombo', 
       ['$parse', function($parse) {
     var SEARCH_LIMIT = 10;
     var getBBoxParameter = function (map) {
