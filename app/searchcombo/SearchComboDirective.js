@@ -6,6 +6,7 @@
   module.directive('gaSearchCombo', 
       ['$parse', function($parse) {
     var SEARCH_LIMIT = 10;
+    var map = null;
     var getBBoxParameter = function (map) {
       if (!map) {
         return '';
@@ -15,15 +16,22 @@
           ext[1] + ',' + ext[3];
     };
 
-    var _handleMouseOver = function (datum) {
-//      console.log(datum);
+    var _handleMouseOver = function (obj) {
+      //center on found object that has a bounding box
+      //(coming from swisssearch service only)
+      if (obj &&
+          obj.datum &&
+          obj.datum.bbox) {
+        map.getView().setCenter([(bbox[0] + bbox[2]) / 2,
+                                (bbox[1] + bbox[3]) / 2]);
+      }
     };
 
     return {
       restrict: 'A',
       replace: true,
       scope: {
-        map: '=appSearchComboMap'
+        map: '=gaSearchComboMap'
       },
       template: '<div><input type="text" class="search-query" id="search">' +
           //TODO: review -> not sure about this div here at this place
@@ -31,7 +39,7 @@
           '<div id=searchComboPopup"></div>' +
           '</div></div>',
       link: function(scope, element, attrs) {
-        var map = $parse(attrs.appSearchComboMap)(scope);
+        map = $parse(attrs.gaSearchComboMap)(scope);
         
         $(element).find('input').typeahead([{
           name: 'allinone',
