@@ -4,6 +4,49 @@
 
 @headerHeight: 89;
 
+@zoombarTop: 110;
+@zoombarRight: 20;
+@zoombarWidth: 18;
+@zoombarHeight: 150;
+
+.ol-zoom {
+    position: absolute;
+    top: unit(@zoombarTop, px);
+    right: unit(@zoombarRight, px);
+    width: unit(@zoombarWidth, px);
+    height: unit(@zoombarHeight + 34, px);
+    a {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        &.ol-zoom-in {
+            background-image: url('../app/img/zoom-plus-mini.png');
+        }
+        &.ol-zoom-out {
+            background-image: url('../app/img/zoom-minus-mini.png');
+            bottom: 0;
+        }
+    }
+}
+.ol-zoomslider {
+    position: absolute;
+    top: unit(@zoombarTop + 18, px);
+    right: unit(@zoombarRight, px);
+    width: unit(@zoombarWidth, px);
+    height: unit(@zoombarHeight, px);
+    /* step height: 11px */
+    background-image: url(../app/img/zoombar.png);
+    .ol-zoomslider-thumb {
+        width: 20px;
+        height: 9px;
+        background-image: url(../app/img/slider.png);
+        margin-left: -1px;
+        display: block;
+        position: absolute;
+        padding: 0;
+    }
+}
+
 body {
     overflow: hidden;
 }

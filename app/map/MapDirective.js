@@ -26,6 +26,9 @@
             }
 
             map.setTarget(element[0]);
+            new ol.control.ZoomSlider({
+               map: map
+            });
           }
         };
       }]);
