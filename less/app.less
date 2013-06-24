@@ -4,11 +4,23 @@
 
 @headerHeight: 89;
 
-@zoombarTop: 110;
-@zoombarRight: 20;
+@zoombarTop: 150;
+@zoombarRight: 27;
 @zoombarWidth: 18;
 @zoombarHeight: 150;
 
+.pan {
+    position: absolute;
+    top: 110px;
+    right: 20px;
+    path {
+        opacity: 0.6;
+        fill: #000000;
+        stroke: #ffffff;
+        stroke-width: 0.4;
+        cursor: pointer;
+    }
+}
 .ol-zoom {
     position: absolute;
     top: unit(@zoombarTop, px);

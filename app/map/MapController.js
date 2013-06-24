@@ -1,5 +1,6 @@
 (function() {
   goog.provide('ga_map_controller');
+  goog.require('app.map.pan');
 
   var module = angular.module('ga_map_controller', []);
 
@@ -23,9 +24,9 @@
         zoom: 2
       })
     });
-    new app.map.pan({
-        map: map
-    })
+    new app.map.Pan({
+      map: map
+    });
 
     $scope.map = map;
 
