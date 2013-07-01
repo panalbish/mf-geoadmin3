@@ -29,6 +29,17 @@ body {
     padding-left: 0;
     background-color: rgba(255, 255, 255, 0.9);
     .box-shadow(6px 6px 12px rgba(0, 0, 0, 0.175));
+    @media screen and (max-width: @screen-phone) {
+        height: auto;
+    }
+}
+
+#logo {
+    height: 89px;
+    width: 246px;
+    @media screen and (max-width: @screen-phone) {
+        display: none;
+    }
 }
 
 #footer {
@@ -47,6 +58,9 @@ body {
 }
 #mouseposition {
     width: 360px;
+    @media screen and (max-width: @screen-phone) {
+        display: none;
+    }
 }
 #mouseposition-select {
     height: auto;
@@ -117,5 +131,14 @@ body {
         .pulldown-open {
             display: none;
         }
+        @media screen and (max-width: @screen-phone) {
+            display: none;
+        }
+    }
+    @media screen and (max-width: @screen-phone) {
+        width: 80%;
+        top: 0;
+        bottom: 0;
+        z-index: -1;  // beneath #wrapper
     }
 }

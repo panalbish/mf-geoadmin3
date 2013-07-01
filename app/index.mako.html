@@ -25,9 +25,9 @@
         (print is not functional, for now...)
         </div>
 % if mode == "prod":
-        <img src="${version}/img/logo.ch.jpeg" style="height: 89px; width: 246px;"/>
+        <img id="logo" src="${version}/img/logo.ch.jpeg"/>
 % else:
-        <img src="img/logo.ch.jpeg" style="height: 89px; width: 246px;"/>
+        <img id="logo" src="img/logo.ch.jpeg"/>
 %endif
         <form class="navbar-form pull-right"
               ng-controller="GaBackgroundLayerSelectorController">
