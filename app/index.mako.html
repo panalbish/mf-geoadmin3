@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="ga">
+
   <head>
     <title>map.geo.admin.ch PREVIEW</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <meta name="description" content="Maps of Switzerland : The official geoportal of the Swiss Confederation provides digital data which can be viewed, printed out, ordered and supplied by means of the map viewer tool. Geoinformation is made available by public-sector organisations and is accessible to the general public."/>
     <meta name="keywords" content="maps Switzerland, map viewer, Confederation, geodata, public platform, geographical information, geoportal, orthophotos, geolocation, geoinformation, Geodaten, Geoinformation, Bund, Plattform, Karte, Kartendienst, Kartenviewer"/>
 % if mode == "prod": 
@@ -14,47 +17,62 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
 %endif
   </head>
+
   <body ng-controller="GaMapController">
     <div id="wrapper">
       <div id="header" class="navbar navbar-fixed-top">
-      <div style="position:absolute; top: 0px; left: 270px;">
-        <h3><font color="red">This application is a preview. Development is ongoing.</font></h3>
-        Please provide feedback: <a href="mailto:info@geo.admin.ch?subject=map.geo.admin.ch preview">info[at]geo.admin.ch</a> or 
-        <a href="https://twitter.com/intent/tweet?screen_name=swiss_geoportal&text=I%20like%20the%20preview%2C%20but%20you%20should" class="twitter-mention-button">Tweet to @swiss_geoportal</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        (print is not functional, for now...)
-        </div>
+        <div id="logo">
 % if mode == "prod":
-        <img id="logo" src="${version}/img/logo.ch.jpeg"/>
+          <img class="hidden-sm" src="${version}/img/logo.ch.jpeg" width="246" height="89"/>
+          <img class="visible-sm" src="${version}/img/geoadminmobile-logo.png" width="93" height="36"/>
 % else:
-        <img id="logo" src="img/logo.ch.jpeg"/>
+          <img class="hidden-sm" src="img/logo.ch.jpeg" width="246" height="89"/>
+          <img class="visible-sm" src="img/geoadminmobile-logo.png" width="93" height="36"/>
 %endif
+        </div>
         <form class="navbar-form pull-right"
-              ng-controller="GaBackgroundLayerSelectorController">
+          ng-controller="GaBackgroundLayerSelectorController">
           <div x-ga-background-layer-selector
-               x-ga-background-layer-selector-map="map"
-               x-ga-background-layer-selector-wmts-url="wmtsUrl"
-               x-ga-background-layer-selector-wmts-layers="wmtsLayers"></div>
+            x-ga-background-layer-selector-map="map"
+            x-ga-background-layer-selector-wmts-url="wmtsUrl"
+            x-ga-background-layer-selector-wmts-layers="wmtsLayers"></div>
         </form>
+        <style>
+          @media screen and (max-width: 480px) {
+            .tmp{ display: none !important;}
+          }
+          iframe {
+            vertical-align: middle;
+          }
+        </style>
+        <h3 class="tmp"
+          style="display:inline-block;font-size:110%;margin:0;color:red;vertical-align:top;padding:
+          .4em .3em 0">
+            This application is a preview.
+          </h3>
+          <div class="visible-lg" style="position:absolute;top:40px;left:260px;">
+          Please provide feedback: <a href="mailto:info@geo.admin.ch?subject=map.geo.admin.ch preview">info[at]geo.admin.ch</a> or 
+          <a href="https://twitter.com/intent/tweet?screen_name=swiss_geoportal&text=I%20like%20the%20preview%2C%20but%20you%20should" class="twitter-mention-button">Tweet to @swiss_geoportal</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          <br><em>print is not functional, for now...</em>
+        </div>
       </div>
       <div id="map" class="map" x-ga-map="map" x-ga-map-resolutions="resolutions">
         <div ga-context-menu ga-context-menu-map="map" class="contextmenu popover"></div>
       </div>
       <div id="footer" class="navbar navbar-fixed-bottom">
         <div id="scaleline" class="pull-left" x-ga-scale-line x-ga-scale-line-map="map"></div>
-        <div class="pipe"></div>
         <div id="mouseposition" class="pull-left" ng-controller="GaMousePositionController">
           <select id="mouseposition-select"
             ng-model="mousePositionProjection"
             ng-options="p.label for p in mousePositionProjections">
           </select>
           <div id="mouseposition-value"
-             x-ga-mouse-position
-             x-ga-mouse-position-map="map"
-             x-ga-mouse-position-projection="mousePositionProjection"></div>
+            x-ga-mouse-position
+            x-ga-mouse-position-map="map"
+            x-ga-mouse-position-projection="mousePositionProjection"></div>
         </div>
-        <div class="pipe"></div>
-        <div id="attribution" class="pull-left" x-ga-attribution x-ga-attribution-map="map"></div>
+        <div id="attribution" class="pull-right" x-ga-attribution x-ga-attribution-map="map"></div>
       </div>
     </div>
 
@@ -65,20 +83,28 @@
             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#pulldown-content" href="#print">
               Print
             </a>
-            <div id="print" class="collapse">
-              <div class="accordion-inner">
-                <%include file="src/print/partials/form.mako.html"/>
-              </div>
+          </div>
+          <div id="print" class="collapse">
+            <div class="accordion-inner">
+              <%include file="src/print/partials/form.mako.html"/>
+            </div>
+          </div>
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#pulldown-content" href="#impressum">
+              Impressum
+            </a>
+          </div>
+          <div id="impressum" class="collapse">
+            <div class="accordion-inner">
+              <p>Sample text</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="text-center">
-        <button type="button" data-toggle="collapse" data-target="#pulldown-content" class="toggle btn btn-default">
-          <span class="pulldown-close">close</span>
-          <span class="pulldown-open">open</span>
-        </button>
-      </div>
+      <button type="button" data-toggle="collapse" data-target="#pulldown-content" class="toggle btn btn-default">
+        <span class="pulldown-close">close</span>
+        <span class="pulldown-open">open</span>
+      </button>
     </div>
 % if mode == "prod":
     <script src="${version}/lib/angular-1.1.5.min.js"></script>
@@ -115,3 +141,4 @@
 
   </body>
 </html>
+
