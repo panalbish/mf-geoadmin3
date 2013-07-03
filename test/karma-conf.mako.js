@@ -1,27 +1,41 @@
 // Karma configuration
 
 // base path, that will be used to resolve files and exclude
-basePath = '../';
+% if mode == 'prod':
+basePath = '../app-prod';
+% else:
+basePath = '../app';
+% endif
 
 // list of files / patterns to load in the browser
 files = [
-  //this automatically includes mocha library (is part of karma)
   MOCHA,
   MOCHA_ADAPTER,
-  //loading all external libraries (explicit, because order is important)
-  'app/lib/jquery-2.0.2.min.js',
-  'app/lib/*.js',
-  //taps network...probably not a good idea in unit tests
-  'http://cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.js',
-  //load libraries only specific to testing
-  'test/angular/angular-mocks.js',
-  'test/expect-0.2.0/expect.js',
-  'test/sinon-1.7.3/sinon.js',
-  'app-prod/src/app.js',
-  //load test specifications (loader first to make sure our app is loaded)
-  'test/specs/Loader.spec.js',
-  'test/specs/**/*.js'
+% if mode == 'prod':
+  'lib/build.js',
+% else:
+  'lib/jquery-2.0.2.js',
+  'lib/angular-1.1.5.js',
+  'lib/bootstrap-3.0.0.js',
+  'lib/proj4js-compressed.js',
+  'lib/EPSG21781.js',
+  '../test/closure-loader-globals.js',
+  'lib/ol-whitespace.js',
+  '../.build-artefacts/app-whitespace.js',
+% endif
+  '../test/angular/angular-mocks.js',
+  '../test/expect-0.2.0/expect.js',
+  '../test/sinon-1.7.3/sinon.js',
+  '../test/specs/Loader.spec.js',
+  '../test/specs/**/*.js',
+  'src/**/*.html'
 ];
+
+
+// generate js files from templates
+preprocessors = {
+  'src/**/*.html': 'html2js'
+};
 
 
 // list of files to exclude
@@ -73,4 +87,3 @@ captureTimeout = 5000;
 // Continuous Integration mode
 // if true, it capture browsers, run tests and exit
 singleRun = false;
-

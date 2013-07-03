@@ -32,10 +32,9 @@
         </div>
         <form class="navbar-form pull-right"
           ng-controller="GaBackgroundLayerSelectorController">
-          <div x-ga-background-layer-selector
-            x-ga-background-layer-selector-map="map"
-            x-ga-background-layer-selector-wmts-url="wmtsUrl"
-            x-ga-background-layer-selector-wmts-layers="wmtsLayers"></div>
+          <div ga-background-layer-selector
+            ga-background-layer-selector-map="map"
+            ga-background-layer-selector-options="options"></div>
         </form>
         <style>
           @media screen and (max-width: 480px) {
@@ -57,22 +56,22 @@
           <br><em>print is not functional, for now...</em>
         </div>
       </div>
-      <div id="map" class="map" x-ga-map="map" x-ga-map-resolutions="resolutions">
-        <div ga-context-menu ga-context-menu-map="map" class="contextmenu popover"></div>
+      <div id="map" class="map" ga-map ga-map-map="map" ga-map-options="options">
+        <div ga-context-menu class="contextmenu popover"></div>
       </div>
       <div id="footer" class="navbar navbar-fixed-bottom">
-        <div id="scaleline" class="pull-left" x-ga-scale-line x-ga-scale-line-map="map"></div>
+        <div id="scaleline" class="pull-left" ga-scale-line ga-scale-line-map="map"></div>
         <div id="mouseposition" class="pull-left" ng-controller="GaMousePositionController">
           <select id="mouseposition-select"
-            ng-model="mousePositionProjection"
+            ng-model="options.projection"
             ng-options="p.label for p in mousePositionProjections">
           </select>
           <div id="mouseposition-value"
-            x-ga-mouse-position
-            x-ga-mouse-position-map="map"
-            x-ga-mouse-position-projection="mousePositionProjection"></div>
+            ga-mouse-position
+            ga-mouse-position-map="map"
+            ga-mouse-position-projection="mousePositionProjection"></div>
         </div>
-        <div id="attribution" class="pull-right" x-ga-attribution x-ga-attribution-map="map"></div>
+        <div id="attribution" class="pull-right" ga-attribution ga-attribution-map="map"></div>
       </div>
     </div>
 
@@ -107,19 +106,13 @@
       </button>
     </div>
 % if mode == "prod":
-    <script src="${version}/lib/angular-1.1.5.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/defs/EPSG21781.js"></script>
-    <script src="${version}/lib/jquery-2.0.2.min.js"></script>
-    <script src="${version}/lib/bootstrap-3.0.0.min.js"></script>
-    <script src="${version}/lib/ol.js"></script>
-    <script src="${version}/src/app.js"></script>
+    <script src="${version}/lib/build.js"></script>
 % else:
+    <script src="lib/jquery-2.0.2.js"></script>
     <script src="lib/angular-1.1.5.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/defs/EPSG21781.js"></script>
-    <script src="lib/jquery-2.0.2.min.js"></script>
     <script src="lib/bootstrap-3.0.0.js"></script>
+    <script src="lib/proj4js-compressed.js"></script>
+    <script src="lib/EPSG21781.js"></script>
 
     <!-- Use Closure to load the application scripts -->
     <script>
