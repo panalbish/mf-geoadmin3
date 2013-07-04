@@ -49,6 +49,7 @@
             ga-mouse-position
             ga-mouse-position-map="map"
             ga-mouse-position-options="options"></div>
+          <div ga-help="help-mouseposition"></div>
         </div>
 % endif
         <div id="copyrights" class="pull-right"><a href="http://www.geo.admin.ch/internet/geoportal/en/home/geoadmin/contact.html#copyright">Copyright & data protection</a></div>
@@ -84,7 +85,7 @@
               <span translate>Print</span>
             </a>
           </div>
-          <div id="print" class="collapse">
+          <div class="print" class="collapse">
             <div class="accordion-inner">
               <%include file="components/print/partials/form.mako.html"/>
             </div>
@@ -185,6 +186,20 @@
         </span>
       </button>
     </div>
+
+    <!-- This 'global' modal dialog could be used by many components -->
+    <div id="ga-help-modal" class="modal-dialog modal fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" translate>Close</button>
+      </div>
+    </div>
+
+
 % if mode == "prod":
     <script src="${version}lib/build.js"></script>
 % else:

@@ -1,6 +1,9 @@
 <form ng-controller="GaPrintController" ng-submit="submit()">
   <div>
-    <label translate>mf.print.layout</label>
+    <div>
+      <label id="layout-label" class="pull-left" translate>mf.print.layout</label>
+      <div ga-help="help-print" class="pull-right"></div>
+    </div>
     <select ng-model="layout" ng-options="l.name for l in capabilities.layouts"></select>
   </div>
   <div>
