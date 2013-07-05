@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="ga_map">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+
+   <link href="../../../style/app.css" rel="stylesheet" media="screen">
+   <style>
+   #map { 
+       border: 1px solid black;
+       width: 600px;
+       height: 450px;
+   }
+  </style>
+
+  </head>
+  <body ng-controller="GaMapController">
+    <div id="map" class="map" ga-map ga-map-map="map" ga-map-options="options">
+      </div>
+
+
+    <script src="../../../lib/jquery-2.0.2.js"></script>
+    <script src="../../../lib/angular-1.1.5.js"></script>
+    <script src="../../../lib/bootstrap-3.0.0.js"></script>
+    <script src="../../../lib/proj4js-compressed.js"></script>
+    <script src="../../../lib/EPSG21781.js"></script>
+
+    <!-- Use Closure to load the application scripts -->
+    <script>
+      window.CLOSURE_NO_DEPS = true;
+      window.CLOSURE_BASE_PATH = "../../";
+    </script>
+
+    <!-- ol-whitespace.js includes Closure's base.js code, so we don't
+         need to load base.js ourselves. We keep Closure's base.js file
+         around in case we need to test with ol.js or ol-simple.js. -->
+    <script src="../../../lib/ol-whitespace.js"></script>
+    <!--<script src="lib/closure/base.js"></script>-->
+
+    <script src="../../deps.js"></script>
+
+<script>
+  goog.require('ga_map');
+ </script>
+
+  </body>
+</html>
+
