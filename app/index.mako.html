@@ -6,21 +6,13 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <meta name="description" content="Maps of Switzerland : The official geoportal of the Swiss Confederation provides digital data which can be viewed, printed out, ordered and supplied by means of the map viewer tool. Geoinformation is made available by public-sector organisations and is accessible to the general public."/>
     <meta name="keywords" content="maps Switzerland, map viewer, Confederation, geodata, public platform, geographical information, geoportal, orthophotos, geolocation, geoinformation, Geodaten, Geoinformation, Bund, Plattform, Karte, Kartendienst, Kartenviewer"/>
-
     <link href="${version}style/app.css" rel="stylesheet" media="screen">
     <link rel="shortcut icon" type="image/x-icon" href="${version}img/favicon.ico"/>
   </head>
   <body ng-controller="GaMapController">
     <div id="wrapper">
       <div id="header" class="navbar navbar-fixed-top">
-      <div style="position:absolute; top: 0px; left: 270px;">
-        <h3><font color="red">This application is a preview. Development is ongoing.</font></h3>
-        Please provide feedback: <a href="mailto:info@geo.admin.ch?subject=map.geo.admin.ch preview">info[at]geo.admin.ch</a> or 
-        <a href="https://twitter.com/intent/tweet?screen_name=swiss_geoportal&text=I%20like%20the%20preview%2C%20but%20you%20should" class="twitter-mention-button">Tweet to @swiss_geoportal</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        (print is not functional, for now...)
-        </div>
-        <img src="${version}img/logo.ch.jpeg" style="height: 89px; width: 246px;"/>
+        <img class="pull-left" src="${version}img/logo.ch.jpeg" style="height: 89px; width: 246px;"/>
         <form class="navbar-form pull-right"
               ng-controller="GaBackgroundLayerSelectorController">
           <div ga-background-layer-selector
@@ -28,6 +20,12 @@
                ga-background-layer-selector-options="options">
           </div>
         </form>
+        <div id='search' class='container-fluid pull-left' 
+            ng-controller="GaSearchController">
+          <div ga-search
+               ga-search-options="options">
+          </div>
+       </div>
       </div>
       <div id="map" class="map" ga-map ga-map-map="map" ga-map-options="options">
         <div ga-context-menu class="contextmenu popover bottom"></div>
@@ -137,6 +135,7 @@
     <script src="lib/jquery-2.0.2.js"></script>
     <script src="lib/angular-1.1.5.js"></script>
     <script src="lib/bootstrap-3.0.0.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.4.0.js"></script>
     <script src="lib/proj4js-compressed.js"></script>
     <script src="lib/EPSG21781.js"></script>
 

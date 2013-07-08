@@ -17,6 +17,7 @@ files = [
   'lib/jquery-2.0.2.js',
   'lib/angular-1.1.5.js',
   'lib/bootstrap-3.0.0.js',
+  'lib/ui-bootstrap-tpls-0.4.0.js',
   'lib/proj4js-compressed.js',
   'lib/EPSG21781.js',
   '../test/closure-loader-globals.js',

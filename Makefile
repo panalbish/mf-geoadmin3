@@ -48,7 +48,7 @@ test: .build-artefacts/app-whitespace.js test/karma-conf-dev.js node_modules
 .PHONY: apache
 apache: apache/app.conf
 
-app-prod/lib/build.js: app/lib/jquery-2.0.2.min.js app/lib/bootstrap-3.0.0.min.js app/lib/angular-1.1.5.min.js app/lib/proj4js-compressed.js app/lib/EPSG21781.js app/lib/ol.js .build-artefacts/app.js
+app-prod/lib/build.js: app/lib/jquery-2.0.2.min.js app/lib/bootstrap-3.0.0.min.js app/lib/ui-bootstrap-tpls-0.4.0.js app/lib/angular-1.1.5.min.js app/lib/proj4js-compressed.js app/lib/EPSG21781.js app/lib/ol.js .build-artefacts/app.js
 	mkdir -p $(dir $@)
 	cat $^ > $@
 
