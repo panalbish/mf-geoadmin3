@@ -71,7 +71,7 @@
                      encodeURIComponent(gaPermalink.getHref());
                   window.open(url, '_blank');
                 } else if (target === 'qrcode') {
-                  var url = gaGlobalOptions.serviceUrl +
+                  var url = scope.options.serviceUrl +
                      '/qrcodegenerator?url=' +
                      encodeURIComponent(gaPermalink.getHref());
                   window.open(url, '_blank');
