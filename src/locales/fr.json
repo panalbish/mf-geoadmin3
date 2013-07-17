@@ -12,5 +12,7 @@
 	"Shorten URL": "URL abrégée",
 	"mf.print.layout": "Orientation",
 	"mf.print.scale": "Échelle",
-	"print action": "Imprimer"
+	"print action": "Imprimer",
+  "Help": "Aide",
+  "Close": "Fermer"
 }

@@ -12,5 +12,7 @@
 	"Shorten URL": "Short URL",
 	"mf.print.layout": "Orientation",
 	"mf.print.scale": "Scale",
-	"print action": "Print"
+	"print action": "Print",
+  "Help": "Help",
+  "Close": "Close"
 }
