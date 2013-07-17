@@ -15,11 +15,10 @@
   goog.require('ga_translation');
   goog.require('ga_feedback');
   goog.require('ga_geolocation');
-
   goog.require('ga_modal_directive');
   goog.require('ga_draggable_directive');
-  
   goog.require('ga_importkml_controller');
+  goog.require('ga_catalogtree_controller');
   goog.require('ga_map_controller');
   goog.require('ga_mouseposition_controller');
   goog.require('ga_share_controller');
@@ -46,6 +45,7 @@
     'ga_draggable_directive',
     'ga_importkml_controller',
     'ga_geolocation',
+    'ga_catalogtree_controller',
     'ga_map_controller',
     'ga_mouseposition_controller',
     'ga_share_controller',
