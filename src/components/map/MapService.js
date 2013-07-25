@@ -90,6 +90,9 @@
           return promise.then(function(data) {
             var layers = data.layers;
             var layer = layers[id];
+            if (!angular.isDefined(layer)) {
+              return layer;
+            }
             var olLayer = layer.olLayer;
             var attribution = '&copy; Data: ' + layer.attribution;
             if (!angular.isDefined(olLayer)) {
