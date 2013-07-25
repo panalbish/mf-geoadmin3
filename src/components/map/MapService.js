@@ -112,7 +112,8 @@
                     requestEncoding: 'REST',
                     tileGrid: gaTileGrid.get(layer.resolutions),
                     url: wmtsUrl
-                  })
+                  }),
+                  layerId: id
                 });
                 layer.olLayer = olLayer;
               }
