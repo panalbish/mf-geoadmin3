@@ -1,7 +1,6 @@
 <div class="ga-catalogtree-template">
   <div ng-switch="item.children">
 
-
     <div ng-switch-when="undefined" class="ga-catalogtree-leaf ga-catalogtree-entry checkbox"
         ng-class="{'preview': item.preview, 'selected': item.selectedOpen}">
       <label ng-mouseover="previewLayer()" ng-mouseleave="removePreviewLayer()">
