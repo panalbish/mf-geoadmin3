@@ -105,10 +105,10 @@
             <div class="accordion-inner">
               <ul>
                 <li> 
-                  <a  ng-click="importWmsPopupShown = !importWmsPopupShown">{{'wms' | translate}}</a>
+                  <a href=""  ng-click="importWmsPopupShown = !importWmsPopupShown">{{'wms' | translate}}</a>
                 </li>
                 <li>
-                  <a  ng-click="importKmlPopupShown = !importKmlPopupShown">{{'kml' | translate}}</a>
+                  <a href="" ng-click="importKmlPopupShown = !importKmlPopupShown">{{'kml' | translate}}</a>
                 </li>
               </ul>
             </div>
@@ -245,8 +245,10 @@
     </div>
 
     <!-- Popup: Import WMS -->
-    <div ga-popup="importWmsPopupShown" ga-popup-options="{title:'import_wms'}"
-         ga-draggable=".ga-popup-title" >
+    <div ga-popup="importWmsPopupShown"
+         ga-popup-options="{title:'import_wms'}"
+         ga-draggable=".ga-popup-title"
+         id="import-wms-popup" >
 	    <div ng-controller="GaImportWmsController">
         <div ga-import-wms
 		         ga-import-wms-map="map"
@@ -258,8 +260,10 @@
     </div> <!-- end Import WMS -->
     
     <!-- Popup: Import KML -->
-    <div ga-popup="importKmlPopupShown" ga-popup-options="{title:'import_kml'}"
-         ga-draggable=".ga-popup-title" >
+    <div ga-popup="importKmlPopupShown"
+         ga-popup-options="{title:'import_kml'}"
+         ga-draggable=".ga-popup-title"
+         id="import-kml-popup" >
       <div ng-controller="GaImportKmlController">
         <div ga-import-kml 
              ga-import-kml-map="map"
