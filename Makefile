@@ -58,10 +58,11 @@ apache: apache/app.conf
 .PHONY: deploybranch
 deploybranch: deploy/deploy-branch.cfg $(DEPLOY_ROOT_DIR)/$(GIT_BRANCH)/.git/config
 	cd $(DEPLOY_ROOT_DIR)/$(GIT_BRANCH); \
-	git config core.sharedRepository true; \
 	git checkout $(GIT_BRANCH); \
 	git pull; \
 	make all; \
+	chgrp -R geodata .; \
+	chmod -R g+rw .; \
 	sudo -u deploy deploy -r deploy/deploy-branch.cfg ab
 
 .PHONY: updateol
@@ -130,8 +131,6 @@ test/karma-conf-prod.js: test/karma-conf.mako.js .build-artefacts/python-venv/bi
 	.build-artefacts/python-venv/bin/mako-render --var "mode=prod" $< > $@
 
 node_modules:
-	npm config set group geodata
-	npm config set umask 0002
 	npm install
 
 .build-artefacts/app.js: .build-artefacts/js-files .build-artefacts/closure-compiler/compiler.jar
@@ -183,7 +182,6 @@ node_modules:
 
 $(DEPLOY_ROOT_DIR)/$(GIT_BRANCH)/.git/config:
 	rm -rf $(DEPLOY_ROOT_DIR)/$(GIT_BRANCH)
-	git config core.sharedRepository true
 	git clone https://github.com/geoadmin/mf-geoadmin3 $(DEPLOY_ROOT_DIR)/$(GIT_BRANCH)
 
 deploy/deploy-branch.cfg: deploy/deploy-branch.mako.cfg .build-artefacts/last-git-branch .build-artefacts/python-venv/bin/mako-render
