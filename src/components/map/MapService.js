@@ -88,6 +88,9 @@
           return promise.then(function(data) {
             var layers = data.layers;
             var layer = layers[id];
+            if (!angular.isDefined(layer)) {
+              return layer;
+            }
             var olLayer = layer.olLayer;
             var attribution = '&copy; Data: ' + layer.attribution;
             if (!angular.isDefined(olLayer)) {
@@ -96,7 +99,7 @@
                               replace('{Format}', layer.format);
 
                 olLayer = new ol.layer.TileLayer({
-                  id: id,
+                  idLayer: id,
                   source: new ol.source.WMTS({
                     attributions: [
                       new ol.Attribution(attribution)
