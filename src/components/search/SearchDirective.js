@@ -89,6 +89,11 @@
              var footer_template = angular.element(footer);
              $compile(footer_template)(scope);
 
+             var layerHeaderTemplate = angular.element(
+                '<div class="tt-header-mapinfos" ' +
+                'ng-show="hasLayerResults">Map Infos:</div>');
+             $compile(layerHeaderTemplate)(scope);
+
              scope.getHref = function() {
               // set those values in options only on mouseover or click
               scope.encodedPermalinkHref =
@@ -173,23 +178,23 @@
                  }
                },
                {
-                 header: '<div class="tt-header-mapinfos">Map Infos:</div>',
+                 header: layerHeaderTemplate,
                  footer: footer_template,
                  name: 'layers',
                  timeout: 20,
                  valueKey: 'inputVal',
                  limit: 20,
                  template: function(context) {
-                   var attrName = 'attr_' + scope.counter.toString();
-                   var template = '<div class="tt-search" ng-init="' +
-                   attrName + '=\'' + context.attrs.layer + '\';" ' +
-                   'ng-mouseover="addLayer(' + attrName + ')" ' +
-                   'ng-mouseout="removeLayer(' + attrName + ')"';
-                   var origin = context.attrs.origin;
-                   var label = context.attrs.label;
-                   template += '>' + label + '<i id="legend-open" ' +
-                   'href="#legend" ng-click="showLegend()"' +
-                   'class="icon-info-sign"> </i></div>';
+                   var template = '<div ng-show="hasLayerResults" ' +
+                       'class="tt-search "' +
+                       'ng-mouseover="addLayer(\'' +
+                       context.attrs.layer + '\')" ' +
+                       'ng-mouseout="removeLayer(\'' +
+                       context.attrs.layer + '\')"' +
+                       '>' + context.attrs.label +
+                       '<i id="legend-open" ' +
+                       'href="#legend" ng-click="showLegend()"' +
+                       'class="icon-info-sign"> </i></div>';
                    scope.counter += 1;
                    return template;
                  },
@@ -250,18 +255,6 @@
                  var elements = angular.element('.tt-dataset-layers');
                  $compile(elements)(scope);
                  scope.counter = 0;
-
-                 // Display footer but hide suggestions and header
-                 var children = elements.children();
-                 if (children.length !== 0) {
-                   if (!scope.hasLayerResults) {
-                     children[0].style.display = 'none';
-                     children[1].style.display = 'none';
-                   } else {
-                     children[0].style.display = 'block';
-                     children[1].style.display = 'block';
-                   }
-                 }
              });
 
              scope.clearInput = function() {
