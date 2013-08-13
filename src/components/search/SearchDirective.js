@@ -211,13 +211,9 @@
                    },
                    filter: function(response) {
                      var results = response.results;
-                     // hasLayerResults is used to control
-                     // the display of the footer
-                     if (results.length === 0) {
-                       scope.hasLayerResults = false;
-                     } else {
-                       scope.hasLayerResults = true;
-                     }
+                     scope.$apply(function() {
+                       scope.hasLayerResults = (results.length !== 0);
+                     });
                      return $.map(results, function(val) {
                        val.inputVal = val.attrs.label
                        .replace('<b>', '').replace('</b>', '');
