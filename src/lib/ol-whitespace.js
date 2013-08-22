@@ -521,13 +521,13 @@ goog.addDependency("../build/src/internal/src/requireall.js", [], ["ol", "ol.Att
 "ol.expr.Expression", "ol.expr.Identifier", "ol.expr.Lexer", "ol.expr.Literal", "ol.expr.Logical", "ol.expr.LogicalOp", "ol.expr.Math", "ol.expr.MathOp", "ol.expr.Member", "ol.expr.Not", "ol.expr.Parser", "ol.expr.Token", "ol.expr.TokenType", "ol.expr.UnexpectedToken", "ol.expr.functions", "ol.extent", "ol.geom.AbstractCollection", "ol.geom.Geometry", "ol.geom.GeometryCollection", "ol.geom.GeometryType", "ol.geom.LineString", "ol.geom.LinearRing", "ol.geom.MultiLineString", "ol.geom.MultiPoint", 
 "ol.geom.MultiPolygon", "ol.geom.Point", "ol.geom.Polygon", "ol.geom.SharedVertices", "ol.geom.Vertex", "ol.geom.VertexArray", "ol.geom2", "ol.geom2.LineString", "ol.geom2.LineStringCollection", "ol.geom2.Point", "ol.geom2.PointCollection", "ol.interaction.ConditionType", "ol.interaction.DoubleClickZoom", "ol.interaction.Drag", "ol.interaction.DragPan", "ol.interaction.DragRotate", "ol.interaction.DragRotateAndZoom", "ol.interaction.DragZoom", "ol.interaction.Interaction", "ol.interaction.KeyboardPan", 
 "ol.interaction.KeyboardZoom", "ol.interaction.MouseWheelZoom", "ol.interaction.Touch", "ol.interaction.TouchPan", "ol.interaction.TouchRotate", "ol.interaction.TouchZoom", "ol.interaction.condition", "ol.interaction.defaults", "ol.layer.ImageLayer", "ol.layer.Layer", "ol.layer.LayerBase", "ol.layer.LayerGroup", "ol.layer.LayerProperty", "ol.layer.LayerState", "ol.layer.TileLayer", "ol.layer.Vector", "ol.layer.VectorLayer2", "ol.layer.VectorLayerEventType", "ol.math", "ol.parser.AsyncObjectFeatureParser", 
-"ol.parser.AsyncStringFeatureParser", "ol.parser.DomFeatureParser", "ol.parser.GPX", "ol.parser.GeoJSON", "ol.parser.KML", "ol.parser.ObjectFeatureParser", "ol.parser.Parser", "ol.parser.ReadFeaturesOptions", "ol.parser.StringFeatureParser", "ol.parser.TopoJSON", "ol.parser.WKT", "ol.parser.XML", "ol.parser.ogc.ExceptionReport", "ol.parser.ogc.GML", "ol.parser.ogc.GML_v2", "ol.parser.ogc.GML_v3", "ol.parser.ogc.OWSCommon_v1", "ol.parser.ogc.OWSCommon_v1_1_0", "ol.parser.ogc.Versioned", "ol.parser.ogc.WMSCapabilities", 
-"ol.parser.ogc.WMSCapabilities_v1", "ol.parser.ogc.WMSCapabilities_v1_0_0", "ol.parser.ogc.WMSCapabilities_v1_1", "ol.parser.ogc.WMSCapabilities_v1_1_0", "ol.parser.ogc.WMSCapabilities_v1_1_1", "ol.parser.ogc.WMSCapabilities_v1_1_1_WMSC", "ol.parser.ogc.WMSCapabilities_v1_3_0", "ol.parser.ogc.WMTSCapabilities", "ol.parser.ogc.WMTSCapabilities_v1_0_0", "ol.parser.polyline", "ol.proj", "ol.proj.CH", "ol.proj.EPSG2056", "ol.proj.EPSG21781", "ol.proj.EPSG3857", "ol.proj.EPSG4326", "ol.proj.addCommonProjections", 
-"ol.renderer.Layer", "ol.renderer.Map", "ol.renderer.canvas.ImageLayer", "ol.renderer.canvas.Layer", "ol.renderer.canvas.Map", "ol.renderer.canvas.SUPPORTED", "ol.renderer.canvas.TileLayer", "ol.renderer.canvas.VectorLayer", "ol.renderer.canvas.VectorRenderer", "ol.renderer.dom.ImageLayer", "ol.renderer.dom.Layer", "ol.renderer.dom.Map", "ol.renderer.dom.SUPPORTED", "ol.renderer.dom.TileLayer", "ol.renderer.webgl.ImageLayer", "ol.renderer.webgl.Layer", "ol.renderer.webgl.Map", "ol.renderer.webgl.SUPPORTED", 
-"ol.renderer.webgl.TileLayer", "ol.renderer.webgl.VectorLayer2", "ol.renderer.webgl.map.shader.Color", "ol.renderer.webgl.map.shader.Default", "ol.renderer.webgl.tilelayer.shader", "ol.renderer.webgl.vectorlayer2.shader.LineStringCollection", "ol.renderer.webgl.vectorlayer2.shader.PointCollection", "ol.size", "ol.source.BingMaps", "ol.source.DebugTileSource", "ol.source.FeatureInfoSource", "ol.source.ImageSource", "ol.source.ImageTileSource", "ol.source.MapQuestOSM", "ol.source.MapQuestOpenAerial", 
-"ol.source.OSM", "ol.source.SingleImageWMS", "ol.source.Source", "ol.source.Stamen", "ol.source.StaticImage", "ol.source.TileJSON", "ol.source.TileSource", "ol.source.TileSourceOptions", "ol.source.TiledWMS", "ol.source.Vector", "ol.source.VectorSource2", "ol.source.WMSGetFeatureInfoMethod", "ol.source.WMTS", "ol.source.WMTSRequestEncoding", "ol.source.XYZ", "ol.source.XYZOptions", "ol.source.wms", "ol.sphere.NORMAL", "ol.sphere.WGS84", "ol.structs.Buffer", "ol.structs.IntegerSet", "ol.structs.LRUCache", 
-"ol.structs.PriorityQueue", "ol.structs.RTree", "ol.style.Icon", "ol.style.IconLiteral", "ol.style.IconType", "ol.style.Line", "ol.style.LineLiteral", "ol.style.Point", "ol.style.PointLiteral", "ol.style.Polygon", "ol.style.PolygonLiteral", "ol.style.Rule", "ol.style.Shape", "ol.style.ShapeLiteral", "ol.style.ShapeType", "ol.style.Style", "ol.style.Symbolizer", "ol.style.SymbolizerLiteral", "ol.style.Text", "ol.style.TextLiteral", "ol.tilegrid.TileGrid", "ol.tilegrid.WMTS", "ol.tilegrid.XYZ", "ol.tilejson", 
-"ol.vec.Mat4", "ol.webgl", "ol.webgl.WebGLContextEventType", "ol.webgl.shader"]);
+"ol.parser.AsyncStringFeatureParser", "ol.parser.DomFeatureParser", "ol.parser.GPX", "ol.parser.GeoJSON", "ol.parser.KML", "ol.parser.ObjectFeatureParser", "ol.parser.Parser", "ol.parser.ReadFeaturesOptions", "ol.parser.StringFeatureParser", "ol.parser.TopoJSON", "ol.parser.WKT", "ol.parser.XML", "ol.parser.ogc.ExceptionReport", "ol.parser.ogc.Filter", "ol.parser.ogc.Filter_v1", "ol.parser.ogc.Filter_v1_0_0", "ol.parser.ogc.Filter_v1_1_0", "ol.parser.ogc.GML", "ol.parser.ogc.GML_v2", "ol.parser.ogc.GML_v3", 
+"ol.parser.ogc.OWSCommon_v1", "ol.parser.ogc.OWSCommon_v1_1_0", "ol.parser.ogc.Versioned", "ol.parser.ogc.WMSCapabilities", "ol.parser.ogc.WMSCapabilities_v1", "ol.parser.ogc.WMSCapabilities_v1_0_0", "ol.parser.ogc.WMSCapabilities_v1_1", "ol.parser.ogc.WMSCapabilities_v1_1_0", "ol.parser.ogc.WMSCapabilities_v1_1_1", "ol.parser.ogc.WMSCapabilities_v1_1_1_WMSC", "ol.parser.ogc.WMSCapabilities_v1_3_0", "ol.parser.ogc.WMTSCapabilities", "ol.parser.ogc.WMTSCapabilities_v1_0_0", "ol.parser.polyline", "ol.proj", 
+"ol.proj.CH", "ol.proj.EPSG2056", "ol.proj.EPSG21781", "ol.proj.EPSG3857", "ol.proj.EPSG4326", "ol.proj.addCommonProjections", "ol.renderer.Layer", "ol.renderer.Map", "ol.renderer.canvas.ImageLayer", "ol.renderer.canvas.Layer", "ol.renderer.canvas.Map", "ol.renderer.canvas.SUPPORTED", "ol.renderer.canvas.TileLayer", "ol.renderer.canvas.VectorLayer", "ol.renderer.canvas.VectorRenderer", "ol.renderer.dom.ImageLayer", "ol.renderer.dom.Layer", "ol.renderer.dom.Map", "ol.renderer.dom.SUPPORTED", "ol.renderer.dom.TileLayer", 
+"ol.renderer.webgl.ImageLayer", "ol.renderer.webgl.Layer", "ol.renderer.webgl.Map", "ol.renderer.webgl.SUPPORTED", "ol.renderer.webgl.TileLayer", "ol.renderer.webgl.VectorLayer2", "ol.renderer.webgl.map.shader.Color", "ol.renderer.webgl.map.shader.Default", "ol.renderer.webgl.tilelayer.shader", "ol.renderer.webgl.vectorlayer2.shader.LineStringCollection", "ol.renderer.webgl.vectorlayer2.shader.PointCollection", "ol.size", "ol.source.BingMaps", "ol.source.DebugTileSource", "ol.source.FeatureInfoSource", 
+"ol.source.ImageSource", "ol.source.ImageTileSource", "ol.source.MapQuestOSM", "ol.source.MapQuestOpenAerial", "ol.source.OSM", "ol.source.SingleImageWMS", "ol.source.Source", "ol.source.Stamen", "ol.source.StaticImage", "ol.source.TileJSON", "ol.source.TileSource", "ol.source.TileSourceOptions", "ol.source.TiledWMS", "ol.source.Vector", "ol.source.VectorSource2", "ol.source.WMSGetFeatureInfoMethod", "ol.source.WMTS", "ol.source.WMTSRequestEncoding", "ol.source.XYZ", "ol.source.XYZOptions", "ol.source.wms", 
+"ol.sphere.NORMAL", "ol.sphere.WGS84", "ol.structs.Buffer", "ol.structs.IntegerSet", "ol.structs.LRUCache", "ol.structs.PriorityQueue", "ol.structs.RTree", "ol.style.Icon", "ol.style.IconLiteral", "ol.style.IconType", "ol.style.Line", "ol.style.LineLiteral", "ol.style.Point", "ol.style.PointLiteral", "ol.style.Polygon", "ol.style.PolygonLiteral", "ol.style.Rule", "ol.style.Shape", "ol.style.ShapeLiteral", "ol.style.ShapeType", "ol.style.Style", "ol.style.Symbolizer", "ol.style.SymbolizerLiteral", 
+"ol.style.Text", "ol.style.TextLiteral", "ol.tilegrid.TileGrid", "ol.tilegrid.WMTS", "ol.tilegrid.XYZ", "ol.tilejson", "ol.vec.Mat4", "ol.webgl", "ol.webgl.WebGLContextEventType", "ol.webgl.shader"]);
 goog.addDependency("../build/src/internal/src/types.js", ["ol.DeviceOrientationOptions", "ol.GeolocationOptions", "ol.GetFeatureInfoOptions", "ol.GetFeaturesOptions", "ol.MapOptions", "ol.OverlayOptions", "ol.Proj4jsProjectionOptions", "ol.ProjectionOptions", "ol.View2DOptions", "ol.animation.BounceOptions", "ol.animation.PanOptions", "ol.animation.RotateOptions", "ol.animation.ZoomOptions", "ol.control.AttributionOptions", "ol.control.ControlOptions", "ol.control.DefaultsOptions", "ol.control.FullScreenOptions", 
 "ol.control.LogoOptions", "ol.control.MousePositionOptions", "ol.control.ScaleLineOptions", "ol.control.ZoomOptions", "ol.control.ZoomSliderOptions", "ol.control.ZoomToExtentOptions", "ol.interaction.DefaultsOptions", "ol.interaction.DoubleClickZoomOptions", "ol.interaction.DragPanOptions", "ol.interaction.DragRotateAndZoomOptions", "ol.interaction.DragRotateOptions", "ol.interaction.DragZoomOptions", "ol.interaction.KeyboardPanOptions", "ol.interaction.KeyboardZoomOptions", "ol.interaction.TouchPanOptions", 
 "ol.interaction.TouchRotateOptions", "ol.layer.LayerBaseOptions", "ol.layer.LayerGroupOptions", "ol.layer.LayerOptions", "ol.layer.TileLayerOptions", "ol.layer.VectorLayerOptions", "ol.parser.GMLOptions", "ol.parser.GMLReadOptions", "ol.parser.GMLWriteOptions", "ol.parser.GPXOptions", "ol.parser.GPXWriteOptions", "ol.parser.KMLOptions", "ol.source.BingMapsOptions", "ol.source.DebugTileSourceOptions", "ol.source.OSMOptions", "ol.source.SingleImageWMSOptions", "ol.source.SourceOptions", "ol.source.StamenOptions", 
@@ -628,6 +628,10 @@ goog.addDependency("../src/ol/parser/gpx.js", ["ol.parser.GPX"], ["goog.dom.xml"
 goog.addDependency("../src/ol/parser/kml.js", ["ol.parser.KML"], ["goog.array", "goog.async.Deferred", "goog.async.DeferredList", "goog.date", "goog.dispose", "goog.dom.xml", "goog.events", "goog.net.EventType", "goog.net.XhrIo", "goog.object", "goog.string", "ol.Feature", "ol.geom.AbstractCollection", "ol.geom.GeometryCollection", "ol.geom.GeometryType", "ol.geom.LineString", "ol.geom.MultiLineString", "ol.geom.MultiPoint", "ol.geom.MultiPolygon", "ol.geom.Point", "ol.geom.Polygon", "ol.geom.SharedVertices", 
 "ol.parser.AsyncObjectFeatureParser", "ol.parser.AsyncStringFeatureParser", "ol.parser.DomFeatureParser", "ol.parser.ReadFeaturesOptions", "ol.parser.StringFeatureParser", "ol.parser.XML", "ol.style.Icon", "ol.style.Line", "ol.style.LineLiteral", "ol.style.Polygon", "ol.style.PolygonLiteral"]);
 goog.addDependency("../src/ol/parser/ogc/exceptionreport.js", ["ol.parser.ogc.ExceptionReport"], ["goog.dom.xml", "ol.parser.XML"]);
+goog.addDependency("../src/ol/parser/ogc/filter.js", ["ol.parser.ogc.Filter"], ["ol.parser.ogc.Filter_v1_0_0", "ol.parser.ogc.Filter_v1_1_0", "ol.parser.ogc.Versioned"]);
+goog.addDependency("../src/ol/parser/ogc/filter_v1.js", ["ol.parser.ogc.Filter_v1"], ["goog.array", "goog.asserts", "goog.dom.xml", "goog.object", "goog.string", "ol.expr", "ol.expr.Call", "ol.expr.Comparison", "ol.expr.ComparisonOp", "ol.expr.Identifier", "ol.expr.Literal", "ol.expr.Logical", "ol.expr.LogicalOp", "ol.expr.Math", "ol.expr.MathOp", "ol.expr.Not", "ol.expr.functions", "ol.parser.XML"]);
+goog.addDependency("../src/ol/parser/ogc/filter_v1_0_0.js", ["ol.parser.ogc.Filter_v1_0_0"], ["goog.asserts", "goog.object", "ol.expr", "ol.expr.Call", "ol.expr.Comparison", "ol.expr.ComparisonOp", "ol.expr.Identifier", "ol.expr.Literal", "ol.expr.functions", "ol.geom.Geometry", "ol.parser.ogc.Filter_v1", "ol.parser.ogc.GML_v2"]);
+goog.addDependency("../src/ol/parser/ogc/filter_v1_1_0.js", ["ol.parser.ogc.Filter_v1_1_0"], ["goog.asserts", "goog.object", "ol.expr", "ol.expr.Call", "ol.expr.Comparison", "ol.expr.ComparisonOp", "ol.expr.Identifier", "ol.expr.Literal", "ol.expr.functions", "ol.geom.Geometry", "ol.parser.ogc.Filter_v1", "ol.parser.ogc.GML_v3"]);
 goog.addDependency("../src/ol/parser/ogc/gml.js", ["ol.parser.ogc.GML"], ["goog.array", "goog.asserts", "goog.dom.xml", "ol.Feature", "ol.geom.Geometry", "ol.geom.GeometryCollection", "ol.geom.GeometryType", "ol.geom.LineString", "ol.geom.LinearRing", "ol.geom.MultiLineString", "ol.geom.MultiPoint", "ol.geom.MultiPolygon", "ol.geom.Point", "ol.geom.Polygon", "ol.parser.StringFeatureParser", "ol.parser.XML", "ol.proj"]);
 goog.addDependency("../src/ol/parser/ogc/gml_v2.js", ["ol.parser.ogc.GML_v2"], ["goog.array", "goog.object", "ol.parser.ogc.GML"]);
 goog.addDependency("../src/ol/parser/ogc/gml_v3.js", ["ol.parser.ogc.GML_v3"], ["goog.array", "goog.functions", "goog.object", "ol.geom.GeometryType", "ol.parser.ogc.GML"]);
@@ -17266,10 +17270,10 @@ ol.expr.isLibCall = function(expr) {
   return name
 };
 ol.expr.lib = {};
-ol.expr.functions = {EXTENT:"extent", FID:"fid", GEOMETRY_TYPE:"geometryType"};
-ol.expr.lib[ol.expr.functions.EXTENT] = function(minX, maxX, minY, maxY) {
+ol.expr.functions = {EXTENT:"extent", FID:"fid", GEOMETRY_TYPE:"geometryType", INTERSECTS:"intersects", CONTAINS:"contains", DWITHIN:"dwithin", WITHIN:"within", LIKE:"like", IEQ:"ieq", INEQ:"ineq"};
+ol.expr.lib[ol.expr.functions.EXTENT] = function(minX, maxX, minY, maxY, opt_projection, opt_attribute) {
   var intersects = false;
-  var geometry = this.getGeometry();
+  var geometry = goog.isDef(opt_attribute) ? this.get(opt_attribute) : this.getGeometry();
   if(geometry) {
     intersects = ol.extent.intersects(geometry.getBounds(), [minX, maxX, minY, maxY])
   }
@@ -17288,6 +17292,35 @@ ol.expr.lib[ol.expr.functions.FID] = function(var_args) {
   }
   return matches
 };
+ol.expr.lib[ol.expr.functions.LIKE] = function(value, pattern, wildCard, singleChar, escapeChar, matchCase) {
+  if(wildCard == ".") {
+    throw new Error('"." is an unsupported wildCard character for ' + 'the "like" function');
+  }
+  wildCard = goog.isDef(wildCard) ? wildCard : "*";
+  singleChar = goog.isDef(singleChar) ? singleChar : ".";
+  escapeChar = goog.isDef(escapeChar) ? escapeChar : "!";
+  pattern = pattern.replace(new RegExp("\\" + escapeChar + "(.|$)", "g"), "\\$1");
+  pattern = pattern.replace(new RegExp("\\" + singleChar, "g"), ".");
+  pattern = pattern.replace(new RegExp("\\" + wildCard, "g"), ".*");
+  pattern = pattern.replace(new RegExp("\\\\.\\*", "g"), "\\" + wildCard);
+  pattern = pattern.replace(new RegExp("\\\\\\.", "g"), "\\" + singleChar);
+  var modifiers = matchCase === false ? "gi" : "g";
+  return(new RegExp(pattern, modifiers)).test(value)
+};
+ol.expr.lib[ol.expr.functions.IEQ] = function(first, second) {
+  if(goog.isString(first) && goog.isString(second)) {
+    return first.toUpperCase() == second.toUpperCase()
+  }else {
+    return first == second
+  }
+};
+ol.expr.lib[ol.expr.functions.INEQ] = function(first, second) {
+  if(goog.isString(first) && goog.isString(second)) {
+    return first.toUpperCase() != second.toUpperCase()
+  }else {
+    return first != second
+  }
+};
 ol.expr.lib[ol.expr.functions.GEOMETRY_TYPE] = function(type) {
   var same = false;
   var geometry = this.getGeometry();
@@ -17295,6 +17328,18 @@ ol.expr.lib[ol.expr.functions.GEOMETRY_TYPE] = function(type) {
     same = geometry.getType() === type
   }
   return same
+};
+ol.expr.lib[ol.expr.functions.INTERSECTS] = function(geom, opt_projection, opt_attribute) {
+  throw new Error("Spatial function not implemented: " + ol.expr.functions.INTERSECTS);
+};
+ol.expr.lib[ol.expr.functions.WITHIN] = function(geom, opt_projection, opt_attribute) {
+  throw new Error("Spatial function not implemented: " + ol.expr.functions.WITHIN);
+};
+ol.expr.lib[ol.expr.functions.CONTAINS] = function(geom, opt_projeciton, opt_attribute) {
+  throw new Error("Spatial function not implemented: " + ol.expr.functions.CONTAINS);
+};
+ol.expr.lib[ol.expr.functions.DWITHIN] = function(geom, distance, units, opt_projection, opt_attribute) {
+  throw new Error("Spatial function not implemented: " + ol.expr.functions.DWITHIN);
 };
 goog.provide("goog.json");
 goog.provide("goog.json.Serializer");
@@ -25581,6 +25626,15 @@ ol.parser.XML.prototype.serialize = function(node) {
     }
   }
 };
+ol.parser.XML.prototype.createDocumentFragment = function() {
+  var element;
+  if(this.xmldom) {
+    element = this.xmldom.createDocumentFragment()
+  }else {
+    element = document.createDocumentFragment()
+  }
+  return element
+};
 goog.provide("ol.parser.GPX");
 goog.require("goog.dom.xml");
 goog.require("ol.Feature");
@@ -29078,6 +29132,431 @@ ol.parser.ogc.ExceptionReport.prototype.read = function(data) {
   }
   return exceptionInfo
 };
+goog.provide("ol.parser.ogc.Filter_v1");
+goog.require("goog.array");
+goog.require("goog.asserts");
+goog.require("goog.dom.xml");
+goog.require("goog.object");
+goog.require("goog.string");
+goog.require("ol.expr");
+goog.require("ol.expr.Call");
+goog.require("ol.expr.Comparison");
+goog.require("ol.expr.ComparisonOp");
+goog.require("ol.expr.Identifier");
+goog.require("ol.expr.Literal");
+goog.require("ol.expr.Logical");
+goog.require("ol.expr.LogicalOp");
+goog.require("ol.expr.Math");
+goog.require("ol.expr.MathOp");
+goog.require("ol.expr.Not");
+goog.require("ol.expr.functions");
+goog.require("ol.parser.XML");
+ol.parser.ogc.Filter_v1 = function() {
+  this.defaultNamespaceURI = "http://www.opengis.net/ogc";
+  this.errorProperty = "filter";
+  this.readers = {"http://www.opengis.net/ogc":{_expression:function(node) {
+    var expressions = [];
+    var obj, value, numValue, expr;
+    for(var child = node.firstChild;child;child = child.nextSibling) {
+      switch(child.nodeType) {
+        case 1:
+          obj = this.readNode(child);
+          if(obj.property) {
+            expressions.push(obj.property)
+          }else {
+            if(goog.isDef(obj.value)) {
+              return obj.value
+            }
+          }
+          break;
+        case 3:
+        ;
+        case 4:
+          value = goog.string.trim(child.nodeValue);
+          if(value) {
+            numValue = goog.string.toNumber(value);
+            if(!isNaN(numValue)) {
+              value = numValue
+            }
+            expressions.push(new ol.expr.Literal(value))
+          }
+          break;
+        default:
+          break
+      }
+    }
+    var num = expressions.length;
+    if(num === 1) {
+      expr = expressions[0]
+    }else {
+      expr = new ol.expr.Literal("");
+      if(num > 1) {
+        var add = ol.expr.MathOp.ADD;
+        for(var i = 0;i < num;++i) {
+          expr = new ol.expr.Math(add, expr, expressions[i])
+        }
+      }
+    }
+    return expr
+  }, "Filter":function(node, obj) {
+    var container = {filters:[]};
+    this.readChildNodes(node, container);
+    if(goog.isDef(container.fids)) {
+      obj.filter = new ol.expr.Call(new ol.expr.Identifier(ol.expr.functions.FID), goog.object.getValues(container.fids))
+    }else {
+      if(container.filters.length > 0) {
+        obj.filter = container.filters[0]
+      }
+    }
+  }, "FeatureId":function(node, obj) {
+    var fid = node.getAttribute("fid");
+    if(fid) {
+      if(!goog.isDef(obj.fids)) {
+        obj.fids = {}
+      }
+      if(!obj.fids.hasOwnProperty(fid)) {
+        obj.fids[fid] = new ol.expr.Literal(fid)
+      }
+    }
+  }, "And":function(node, obj) {
+    var container = {filters:[]};
+    this.readChildNodes(node, container);
+    var filter = this.aggregateLogical_(container.filters, ol.expr.LogicalOp.AND);
+    obj.filters.push(filter)
+  }, "Or":function(node, obj) {
+    var container = {filters:[]};
+    this.readChildNodes(node, container);
+    var filter = this.aggregateLogical_(container.filters, ol.expr.LogicalOp.OR);
+    obj.filters.push(filter)
+  }, "Not":function(node, obj) {
+    var container = {filters:[]};
+    this.readChildNodes(node, container);
+    obj.filters.push(new ol.expr.Not(container.filters[0]))
+  }, "PropertyIsNull":function(node, obj) {
+    var container = {};
+    this.readChildNodes(node, container);
+    obj.filters.push(new ol.expr.Comparison(ol.expr.ComparisonOp.EQ, container.property, new ol.expr.Literal(null)))
+  }, "PropertyIsLessThan":function(node, obj) {
+    var container = {};
+    this.readChildNodes(node, container);
+    obj.filters.push(new ol.expr.Comparison(ol.expr.ComparisonOp.LT, container.property, container.value))
+  }, "PropertyIsGreaterThan":function(node, obj) {
+    var container = {};
+    this.readChildNodes(node, container);
+    obj.filters.push(new ol.expr.Comparison(ol.expr.ComparisonOp.GT, container.property, container.value))
+  }, "PropertyIsLessThanOrEqualTo":function(node, obj) {
+    var container = {};
+    this.readChildNodes(node, container);
+    obj.filters.push(new ol.expr.Comparison(ol.expr.ComparisonOp.LTE, container.property, container.value))
+  }, "PropertyIsGreaterThanOrEqualTo":function(node, obj) {
+    var container = {};
+    this.readChildNodes(node, container);
+    obj.filters.push(new ol.expr.Comparison(ol.expr.ComparisonOp.GTE, container.property, container.value))
+  }, "PropertyIsBetween":function(node, obj) {
+    var container = {};
+    this.readChildNodes(node, container);
+    obj.filters.push(new ol.expr.Logical(ol.expr.LogicalOp.AND, new ol.expr.Comparison(ol.expr.ComparisonOp.GTE, container.property, container.lowerBoundary), new ol.expr.Comparison(ol.expr.ComparisonOp.LTE, container.property, container.upperBoundary)))
+  }, "Literal":function(node, obj) {
+    var nodeValue = this.getChildValue(node);
+    var value = goog.string.toNumber(nodeValue);
+    obj.value = new ol.expr.Literal(isNaN(value) ? nodeValue : value)
+  }, "PropertyName":function(node, obj) {
+    obj.property = new ol.expr.Identifier(this.getChildValue(node))
+  }, "LowerBoundary":function(node, obj) {
+    var readers = this.readers[this.defaultNamespaceURI];
+    obj.lowerBoundary = readers._expression.call(this, node)
+  }, "UpperBoundary":function(node, obj) {
+    var readers = this.readers[this.defaultNamespaceURI];
+    obj.upperBoundary = readers._expression.call(this, node)
+  }, _spatial:function(node, obj, identifier) {
+    var args = [], container = {};
+    this.readChildNodes(node, container);
+    if(goog.isDef(container.geometry)) {
+      args.push(new ol.expr.Literal(this.gml_.createGeometry(container)))
+    }else {
+      args = [new ol.expr.Literal(container.bounds[0]), new ol.expr.Literal(container.bounds[1]), new ol.expr.Literal(container.bounds[2]), new ol.expr.Literal(container.bounds[3])]
+    }
+    if(goog.isDef(container.distance)) {
+      args.push(container.distance)
+    }
+    if(goog.isDef(container.distanceUnits)) {
+      args.push(container.distanceUnits)
+    }
+    args.push(new ol.expr.Literal(container.projection));
+    if(goog.isDef(container.property)) {
+      args.push(container.property)
+    }
+    obj.filters.push(new ol.expr.Call(new ol.expr.Identifier(identifier), args))
+  }, "BBOX":function(node, obj) {
+    var readers = this.readers[this.defaultNamespaceURI];
+    readers._spatial.call(this, node, obj, ol.expr.functions.EXTENT)
+  }, "Intersects":function(node, obj) {
+    var readers = this.readers[this.defaultNamespaceURI];
+    readers._spatial.call(this, node, obj, ol.expr.functions.INTERSECTS)
+  }, "Within":function(node, obj) {
+    var readers = this.readers[this.defaultNamespaceURI];
+    readers._spatial.call(this, node, obj, ol.expr.functions.WITHIN)
+  }, "Contains":function(node, obj) {
+    var readers = this.readers[this.defaultNamespaceURI];
+    readers._spatial.call(this, node, obj, ol.expr.functions.CONTAINS)
+  }, "DWithin":function(node, obj) {
+    var readers = this.readers[this.defaultNamespaceURI];
+    readers._spatial.call(this, node, obj, ol.expr.functions.DWITHIN)
+  }, "Distance":function(node, obj) {
+    var value = goog.string.toNumber(this.getChildValue(node));
+    obj.distance = new ol.expr.Literal(value);
+    obj.distanceUnits = new ol.expr.Literal(node.getAttribute("units"))
+  }}};
+  this.writers = {"http://www.opengis.net/ogc":{"Filter":function(filter) {
+    var node = this.createElementNS("ogc:Filter");
+    this.writeNode(this.getFilterType_(filter), filter, null, node);
+    return node
+  }, "_featureIds":function(filter) {
+    var node = this.createDocumentFragment();
+    var args = filter.getArgs();
+    for(var i = 0, ii = args.length;i < ii;i++) {
+      goog.asserts.assert(args[i] instanceof ol.expr.Literal);
+      this.writeNode("FeatureId", args[i].getValue(), null, node)
+    }
+    return node
+  }, "FeatureId":function(fid) {
+    var node = this.createElementNS("ogc:FeatureId");
+    node.setAttribute("fid", fid);
+    return node
+  }, "And":function(filter) {
+    var node = this.createElementNS("ogc:And");
+    var subFilters = [];
+    this.getSubfiltersForLogical_(filter, subFilters);
+    for(var i = 0, ii = subFilters.length;i < ii;++i) {
+      var subFilter = subFilters[i];
+      if(goog.isDefAndNotNull(subFilter)) {
+        this.writeNode(this.getFilterType_(subFilter), subFilter, null, node)
+      }
+    }
+    return node
+  }, "Or":function(filter) {
+    var node = this.createElementNS("ogc:Or");
+    var subFilters = [];
+    this.getSubfiltersForLogical_(filter, subFilters);
+    for(var i = 0, ii = subFilters.length;i < ii;++i) {
+      var subFilter = subFilters[i];
+      if(goog.isDefAndNotNull(subFilter)) {
+        this.writeNode(this.getFilterType_(subFilter), subFilter, null, node)
+      }
+    }
+    return node
+  }, "Not":function(filter) {
+    var node = this.createElementNS("ogc:Not");
+    var childFilter = filter.getArgument();
+    this.writeNode(this.getFilterType_(childFilter), childFilter, null, node);
+    return node
+  }, "PropertyIsLessThan":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsLessThan");
+    this.writeNode("PropertyName", filter.getLeft(), null, node);
+    this.writeOgcExpression(filter.getRight(), node);
+    return node
+  }, "PropertyIsGreaterThan":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsGreaterThan");
+    this.writeNode("PropertyName", filter.getLeft(), null, node);
+    this.writeOgcExpression(filter.getRight(), node);
+    return node
+  }, "PropertyIsLessThanOrEqualTo":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsLessThanOrEqualTo");
+    this.writeNode("PropertyName", filter.getLeft(), null, node);
+    this.writeOgcExpression(filter.getRight(), node);
+    return node
+  }, "PropertyIsGreaterThanOrEqualTo":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsGreaterThanOrEqualTo");
+    this.writeNode("PropertyName", filter.getLeft(), null, node);
+    this.writeOgcExpression(filter.getRight(), node);
+    return node
+  }, "PropertyIsBetween":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsBetween");
+    var property = filter.getLeft().getLeft();
+    this.writeNode("PropertyName", property, null, node);
+    var lower, upper;
+    var filters = new Array(2);
+    filters[0] = filter.getLeft();
+    filters[1] = filter.getRight();
+    for(var i = 0;i < 2;++i) {
+      var expr = filters[i].getRight();
+      if(filters[i].getOperator() === ol.expr.ComparisonOp.GTE) {
+        lower = expr
+      }else {
+        if(filters[i].getOperator() === ol.expr.ComparisonOp.LTE) {
+          upper = expr
+        }
+      }
+    }
+    this.writeNode("LowerBoundary", lower, null, node);
+    this.writeNode("UpperBoundary", upper, null, node);
+    return node
+  }, "PropertyName":function(expr) {
+    goog.asserts.assert(expr instanceof ol.expr.Identifier);
+    var node = this.createElementNS("ogc:PropertyName");
+    node.appendChild(this.createTextNode(expr.getName()));
+    return node
+  }, "Literal":function(expr) {
+    goog.asserts.assert(expr instanceof ol.expr.Literal);
+    var node = this.createElementNS("ogc:Literal");
+    node.appendChild(this.createTextNode(expr.getValue()));
+    return node
+  }, "LowerBoundary":function(expr) {
+    var node = this.createElementNS("ogc:LowerBoundary");
+    this.writeOgcExpression(expr, node);
+    return node
+  }, "UpperBoundary":function(expr) {
+    var node = this.createElementNS("ogc:UpperBoundary");
+    this.writeOgcExpression(expr, node);
+    return node
+  }, "INTERSECTS":function(filter) {
+    return this.writeSpatial_(filter, "Intersects")
+  }, "WITHIN":function(filter) {
+    return this.writeSpatial_(filter, "Within")
+  }, "CONTAINS":function(filter) {
+    return this.writeSpatial_(filter, "Contains")
+  }, "DWITHIN":function(filter) {
+    var node = this.writeSpatial_(filter, "DWithin");
+    this.writeNode("Distance", filter, null, node);
+    return node
+  }, "Distance":function(filter) {
+    var node = this.createElementNS("ogc:Distance");
+    var args = filter.getArgs();
+    goog.asserts.assert(args[2] instanceof ol.expr.Literal);
+    node.setAttribute("units", args[2].getValue());
+    goog.asserts.assert(args[1] instanceof ol.expr.Literal);
+    node.appendChild(this.createTextNode(args[1].getValue()));
+    return node
+  }, "Function":function(filter) {
+    var node = this.createElementNS("ogc:Function");
+    node.setAttribute("name", filter.getCallee().getName());
+    var params = filter.getArgs();
+    for(var i = 0, len = params.length;i < len;i++) {
+      this.writeOgcExpression(params[i], node)
+    }
+    return node
+  }, "PropertyIsNull":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsNull");
+    this.writeNode("PropertyName", filter.getLeft(), null, node);
+    return node
+  }}};
+  goog.base(this)
+};
+goog.inherits(ol.parser.ogc.Filter_v1, ol.parser.XML);
+ol.parser.ogc.Filter_v1.filterMap_ = {"\x26\x26":"And", "||":"Or", "!":"Not", "\x3d\x3d":"PropertyIsEqualTo", "!\x3d":"PropertyIsNotEqualTo", "\x3c":"PropertyIsLessThan", "\x3e":"PropertyIsGreaterThan", "\x3c\x3d":"PropertyIsLessThanOrEqualTo", "\x3e\x3d":"PropertyIsGreaterThanOrEqualTo", "..":"PropertyIsBetween", "like":"PropertyIsLike", "null":"PropertyIsNull", "extent":"BBOX", "dwithin":"DWITHIN", "within":"WITHIN", "contains":"CONTAINS", "intersects":"INTERSECTS", "fid":"_featureIds", "ieq":"PropertyIsEqualTo", 
+"ineq":"PropertyIsNotEqualTo"};
+ol.parser.ogc.Filter_v1.prototype.getFilterType_ = function(filter) {
+  var type;
+  if(filter instanceof ol.expr.Logical || filter instanceof ol.expr.Comparison) {
+    type = filter.getOperator();
+    var left = filter.getLeft();
+    var right = filter.getRight();
+    var isNull = type === ol.expr.ComparisonOp.EQ && right instanceof ol.expr.Literal && right.getValue() === null;
+    if(isNull) {
+      type = "null"
+    }
+    var isBetween = type === ol.expr.LogicalOp.AND && left instanceof ol.expr.Comparison && right instanceof ol.expr.Comparison && left.getLeft() instanceof ol.expr.Identifier && right.getLeft() instanceof ol.expr.Identifier && left.getLeft().getName() === right.getLeft().getName() && (left.getOperator() === ol.expr.ComparisonOp.LTE || left.getOperator() === ol.expr.ComparisonOp.GTE) && (right.getOperator() === ol.expr.ComparisonOp.LTE || right.getOperator() === ol.expr.ComparisonOp.GTE);
+    if(isBetween) {
+      type = ".."
+    }
+  }else {
+    if(filter instanceof ol.expr.Call) {
+      var callee = filter.getCallee();
+      goog.asserts.assert(callee instanceof ol.expr.Identifier);
+      type = callee.getName()
+    }else {
+      if(filter instanceof ol.expr.Not) {
+        type = "!"
+      }
+    }
+  }
+  var filterType = ol.parser.ogc.Filter_v1.filterMap_[type];
+  if(!filterType) {
+    throw new Error("Filter writing not supported for rule type: " + type);
+  }
+  return filterType
+};
+ol.parser.ogc.Filter_v1.prototype.read = function(data) {
+  if(goog.isString(data)) {
+    data = goog.dom.xml.loadXml(data)
+  }
+  if(data && data.nodeType == 9) {
+    data = data.documentElement
+  }
+  var obj = {};
+  this.readNode(data, obj);
+  return obj.filter
+};
+ol.parser.ogc.Filter_v1.prototype.write = function(filter) {
+  var root = this.writeNode("Filter", filter);
+  this.setAttributeNS(root, "http://www.w3.org/2001/XMLSchema-instance", "xsi:schemaLocation", this.schemaLocation);
+  return this.serialize(root)
+};
+ol.parser.ogc.Filter_v1.prototype.writeOgcExpression = function(expr, node) {
+  if(expr instanceof ol.expr.Call) {
+    this.writeNode("Function", expr, null, node)
+  }else {
+    if(expr instanceof ol.expr.Literal) {
+      this.writeNode("Literal", expr, null, node)
+    }else {
+      if(expr instanceof ol.expr.Identifier) {
+        this.writeNode("PropertyName", expr, null, node)
+      }
+    }
+  }
+  return node
+};
+ol.parser.ogc.Filter_v1.prototype.getSubfiltersForLogical_ = function(filter, subFilters) {
+  var operator = filter.getOperator();
+  var filters = new Array(2);
+  filters[0] = filter.getLeft();
+  filters[1] = filter.getRight();
+  for(var i = 0;i < 2;++i) {
+    if(filters[i] instanceof ol.expr.Logical && filters[i].getOperator() === operator) {
+      this.getSubfiltersForLogical_(filters[i], subFilters)
+    }else {
+      subFilters.push(filters[i])
+    }
+  }
+};
+ol.parser.ogc.Filter_v1.prototype.aggregateLogical_ = function(filters, operator) {
+  var subFilters = [];
+  var newFilters = [];
+  if(filters.length > 2) {
+    while(filters.length) {
+      subFilters.push(filters.pop());
+      if(subFilters.length === 2) {
+        newFilters.push(new ol.expr.Logical(operator, subFilters[0], subFilters[1]));
+        subFilters.length = 0
+      }
+    }
+    if(subFilters.length === 1) {
+      newFilters.push(subFilters[0])
+    }
+    return this.aggregateLogical_(newFilters, operator)
+  }else {
+    return new ol.expr.Logical(operator, filters[0], filters[1])
+  }
+};
+ol.parser.ogc.Filter_v1.prototype.setGmlParser = function(gml) {
+  this.gml_ = gml;
+  for(var uri in this.gml_.readers) {
+    for(var key in this.gml_.readers[uri]) {
+      if(!goog.isDef(this.readers[uri])) {
+        this.readers[uri] = {}
+      }
+      this.readers[uri][key] = goog.bind(this.gml_.readers[uri][key], this.gml_)
+    }
+  }
+  for(uri in this.gml_.writers) {
+    for(key in this.gml_.writers[uri]) {
+      if(!goog.isDef(this.writers[uri])) {
+        this.writers[uri] = {}
+      }
+      this.writers[uri][key] = goog.bind(this.gml_.writers[uri][key], this.gml_)
+    }
+  }
+};
 goog.provide("ol.parser.ogc.GML");
 goog.require("goog.array");
 goog.require("goog.asserts");
@@ -29287,7 +29766,7 @@ ol.parser.ogc.GML = function(opt_options) {
           sharedVertices = callback(feature, geom.type)
         }
       }
-      var geometry = this.createGeometry_({geometry:geom}, sharedVertices);
+      var geometry = this.createGeometry({geometry:geom}, sharedVertices);
       if(goog.isDef(geometry)) {
         feature.setGeometry(geometry)
       }
@@ -29413,7 +29892,7 @@ ol.parser.ogc.GML = function(opt_options) {
         }
       }
     }
-    if(goog.isDef(this.srsName)) {
+    if(goog.isDefAndNotNull(this.srsName)) {
       this.setAttributeNS(child, null, "srsName", this.srsName)
     }
     return node
@@ -29476,7 +29955,7 @@ ol.parser.ogc.GML.prototype.readNode = function(node, obj, opt_first) {
   }
   return ol.parser.XML.prototype.readNode.apply(this, [node, obj])
 };
-ol.parser.ogc.GML.prototype.createGeometry_ = function(container, opt_vertices) {
+ol.parser.ogc.GML.prototype.createGeometry = function(container, opt_vertices) {
   var geometry = null, coordinates, i, ii;
   switch(container.geometry.type) {
     case ol.geom.GeometryType.POINT:
@@ -29515,7 +29994,7 @@ ol.parser.ogc.GML.prototype.createGeometry_ = function(container, opt_vertices) 
     case ol.geom.GeometryType.GEOMETRYCOLLECTION:
       var geometries = [];
       for(i = 0, ii = container.geometry.parts.length;i < ii;i++) {
-        geometries.push(this.createGeometry_({geometry:container.geometry.parts[i]}, opt_vertices))
+        geometries.push(this.createGeometry({geometry:container.geometry.parts[i]}, opt_vertices))
       }
       geometry = new ol.geom.GeometryCollection(geometries);
       break;
@@ -29572,6 +30051,7 @@ ol.parser.ogc.GML_v2 = function(opt_options) {
     var coordinates = [];
     this.readers[this.defaultNamespaceURI]["_inherit"].apply(this, [node, coordinates, container]);
     this.readChildNodes(node, coordinates);
+    container.projection = node.getAttribute("srsName");
     container.bounds = [coordinates[0][0][0], coordinates[0][1][0], coordinates[0][0][1], coordinates[0][1][1]]
   }});
   goog.object.extend(this.writers["http://www.opengis.net/gml"], {"Point":function(geometry) {
@@ -29623,8 +30103,8 @@ ol.parser.ogc.GML_v2 = function(opt_options) {
     return node
   }, "Box":function(extent) {
     var node = this.createElementNS("gml:Box");
-    this.writeNode("coordinates", [[extent.minX, extent.minY], [extent.maxX, extent.maxY]], null, node);
-    if(goog.isDef(this.srsName)) {
+    this.writeNode("coordinates", [[extent[0], extent[1]], [extent[2], extent[3]]], null, node);
+    if(goog.isDefAndNotNull(this.srsName)) {
       node.setAttribute("srsName", this.srsName)
     }
     return node
@@ -29639,6 +30119,145 @@ ol.parser.ogc.GML_v2.prototype.write = function(obj, opt_options) {
   delete this.srsName;
   delete this.axisOrientation;
   return gml
+};
+goog.provide("ol.parser.ogc.Filter_v1_0_0");
+goog.require("goog.asserts");
+goog.require("goog.object");
+goog.require("ol.expr");
+goog.require("ol.expr.Call");
+goog.require("ol.expr.Comparison");
+goog.require("ol.expr.ComparisonOp");
+goog.require("ol.expr.Identifier");
+goog.require("ol.expr.Literal");
+goog.require("ol.expr.functions");
+goog.require("ol.geom.Geometry");
+goog.require("ol.parser.ogc.Filter_v1");
+goog.require("ol.parser.ogc.GML_v2");
+ol.parser.ogc.Filter_v1_0_0 = function() {
+  goog.base(this);
+  this.version = "1.0.0";
+  this.schemaLocation = "http://www.opengis.net/ogc " + "http://schemas.opengis.net/filter/1.0.0/filter.xsd";
+  goog.object.extend(this.readers["http://www.opengis.net/ogc"], {"PropertyIsEqualTo":function(node, obj) {
+    var container = {};
+    this.readChildNodes(node, container);
+    obj.filters.push(new ol.expr.Comparison(ol.expr.ComparisonOp.EQ, container.property, container.value))
+  }, "PropertyIsNotEqualTo":function(node, obj) {
+    var container = {};
+    this.readChildNodes(node, container);
+    obj.filters.push(new ol.expr.Comparison(ol.expr.ComparisonOp.NEQ, container.property, container.value))
+  }, "PropertyIsLike":function(node, obj) {
+    var container = {};
+    this.readChildNodes(node, container);
+    var args = [];
+    args.push(container.property, container.value, new ol.expr.Literal(node.getAttribute("wildCard")), new ol.expr.Literal(node.getAttribute("singleChar")), new ol.expr.Literal(node.getAttribute("escape")));
+    obj.filters.push(new ol.expr.Call(new ol.expr.Identifier(ol.expr.functions.LIKE), args))
+  }});
+  goog.object.extend(this.writers["http://www.opengis.net/ogc"], {"PropertyIsEqualTo":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsEqualTo");
+    var property = filter.getLeft();
+    this.writeNode("PropertyName", property, null, node);
+    this.writeOgcExpression(filter.getRight(), node);
+    return node
+  }, "PropertyIsNotEqualTo":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsNotEqualTo");
+    var property = filter.getLeft();
+    this.writeNode("PropertyName", property, null, node);
+    this.writeOgcExpression(filter.getRight(), node);
+    return node
+  }, "PropertyIsLike":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsLike");
+    var args = filter.getArgs();
+    goog.asserts.assert(args[2] instanceof ol.expr.Literal);
+    node.setAttribute("wildCard", args[2].getValue());
+    goog.asserts.assert(args[3] instanceof ol.expr.Literal);
+    node.setAttribute("singleChar", args[3].getValue());
+    goog.asserts.assert(args[4] instanceof ol.expr.Literal);
+    node.setAttribute("escape", args[4].getValue());
+    var property = args[0];
+    if(goog.isDef(property)) {
+      this.writeNode("PropertyName", property, null, node)
+    }
+    this.writeNode("Literal", args[1], null, node);
+    return node
+  }, "BBOX":function(filter) {
+    var node = this.createElementNS("ogc:BBOX");
+    var args = filter.getArgs();
+    goog.asserts.assert(args[0] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[1] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[2] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[3] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[4] instanceof ol.expr.Literal);
+    var property = args[5], bbox = [args[0].getValue(), args[1].getValue(), args[2].getValue(), args[3].getValue()], projection = args[4].getValue();
+    if(goog.isDefAndNotNull(property)) {
+      this.writeNode("PropertyName", property, null, node)
+    }
+    var box = this.writeNode("Box", bbox, "http://www.opengis.net/gml");
+    if(goog.isDefAndNotNull(projection)) {
+      box.setAttribute("srsName", projection)
+    }
+    node.appendChild(box);
+    return node
+  }});
+  this.setGmlParser(new ol.parser.ogc.GML_v2({featureNS:"http://foo"}))
+};
+goog.inherits(ol.parser.ogc.Filter_v1_0_0, ol.parser.ogc.Filter_v1);
+ol.parser.ogc.Filter_v1_0_0.prototype.writeSpatial_ = function(filter, name) {
+  var node = this.createElementNS("ogc:" + name);
+  var args = filter.getArgs();
+  var property, geom = null, bbox, call, projection;
+  if(args[0] instanceof ol.expr.Literal && goog.isNumber(args[0].getValue())) {
+    goog.asserts.assert(args[1] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[2] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[3] instanceof ol.expr.Literal);
+    bbox = [args[0].getValue(), args[1].getValue(), args[2].getValue(), args[3].getValue()];
+    projection = args[4];
+    property = args[5]
+  }else {
+    if(args[0] instanceof ol.expr.Literal && args[0].getValue() instanceof ol.geom.Geometry) {
+      geom = args[0].getValue();
+      if(name === "DWithin") {
+        projection = args[3];
+        property = args[4]
+      }else {
+        projection = args[1];
+        property = args[2]
+      }
+    }else {
+      if(args[0] instanceof ol.expr.Call) {
+        call = args[0];
+        if(name === "DWithin") {
+          projection = args[3];
+          property = args[4]
+        }else {
+          projection = args[1];
+          property = args[2]
+        }
+      }
+    }
+  }
+  if(goog.isDefAndNotNull(property)) {
+    this.writeNode("PropertyName", property, null, node)
+  }
+  if(goog.isDef(call)) {
+    this.writeNode("Function", call, null, node)
+  }else {
+    var child;
+    if(geom !== null) {
+      child = this.writeNode("_geometry", geom, this.gml_.featureNS).firstChild
+    }else {
+      if(bbox.length === 4) {
+        child = this.writeNode("Box", bbox, "http://www.opengis.net/gml")
+      }
+    }
+    if(goog.isDef(child)) {
+      goog.asserts.assert(projection instanceof ol.expr.Literal);
+      if(goog.isDefAndNotNull(projection.getValue())) {
+        child.setAttribute("srsName", projection.getValue())
+      }
+      node.appendChild(child)
+    }
+  }
+  return node
 };
 goog.provide("ol.parser.ogc.GML_v3");
 goog.require("goog.array");
@@ -29699,7 +30318,7 @@ ol.parser.ogc.GML_v3 = function(opt_options) {
         }
       }
     }
-    if(goog.isDef(this.srsName)) {
+    if(goog.isDefAndNotNull(this.srsName)) {
       this.setAttributeNS(child, null, "srsName", this.srsName)
     }
     return node
@@ -29811,6 +30430,7 @@ ol.parser.ogc.GML_v3 = function(opt_options) {
     var coordinates = [];
     this.readers[this.defaultNamespaceURI]["_inherit"].apply(this, [node, coordinates, container]);
     this.readChildNodes(node, coordinates);
+    container.projection = node.getAttribute("srsName");
     container.bounds = [coordinates[0][0][0][0], coordinates[1][0][0][0], coordinates[0][0][0][1], coordinates[1][0][0][1]]
   }, "lowerCorner":function(node, envelope) {
     var coordinates = [];
@@ -29948,9 +30568,9 @@ ol.parser.ogc.GML_v3 = function(opt_options) {
   }, "lowerCorner":function(bounds) {
     var pos;
     if(this.axisOrientation.substr(0, 2) === "en") {
-      pos = bounds.left + " " + bounds.bottom
+      pos = bounds[0] + " " + bounds[2]
     }else {
-      pos = bounds.bottom + " " + bounds.left
+      pos = bounds[2] + " " + bounds[0]
     }
     var node = this.createElementNS("gml:lowerCorner");
     node.appendChild(this.createTextNode(pos));
@@ -29958,9 +30578,9 @@ ol.parser.ogc.GML_v3 = function(opt_options) {
   }, "upperCorner":function(bounds) {
     var pos;
     if(this.axisOrientation.substr(0, 2) === "en") {
-      pos = bounds.right + " " + bounds.top
+      pos = bounds[1] + " " + bounds[3]
     }else {
-      pos = bounds.top + " " + bounds.right
+      pos = bounds[3] + " " + bounds[1]
     }
     var node = this.createElementNS("gml:upperCorner");
     node.appendChild(this.createTextNode(pos));
@@ -29977,6 +30597,293 @@ ol.parser.ogc.GML_v3.prototype.write = function(obj, opt_options) {
   delete this.axisOrientation;
   return gml
 };
+goog.provide("ol.parser.ogc.Filter_v1_1_0");
+goog.require("goog.asserts");
+goog.require("goog.object");
+goog.require("ol.expr");
+goog.require("ol.expr.Call");
+goog.require("ol.expr.Comparison");
+goog.require("ol.expr.ComparisonOp");
+goog.require("ol.expr.Identifier");
+goog.require("ol.expr.Literal");
+goog.require("ol.expr.functions");
+goog.require("ol.geom.Geometry");
+goog.require("ol.parser.ogc.Filter_v1");
+goog.require("ol.parser.ogc.GML_v3");
+ol.parser.ogc.Filter_v1_1_0 = function() {
+  goog.base(this);
+  this.version = "1.1.0";
+  this.schemaLocation = "http://www.opengis.net/ogc " + "http://schemas.opengis.net/filter/1.1.0/filter.xsd";
+  goog.object.extend(this.readers["http://www.opengis.net/ogc"], {"PropertyIsEqualTo":function(node, obj) {
+    var matchCase = node.getAttribute("matchCase");
+    var container = {}, filter;
+    this.readChildNodes(node, container);
+    if(matchCase === "false" || matchCase === "0") {
+      filter = new ol.expr.Call(new ol.expr.Identifier(ol.expr.functions.IEQ), [container.property, container.value])
+    }else {
+      filter = new ol.expr.Comparison(ol.expr.ComparisonOp.EQ, container.property, container.value)
+    }
+    obj.filters.push(filter)
+  }, "PropertyIsNotEqualTo":function(node, obj) {
+    var matchCase = node.getAttribute("matchCase");
+    var container = {}, filter;
+    this.readChildNodes(node, container);
+    if(matchCase === "false" || matchCase === "0") {
+      filter = new ol.expr.Call(new ol.expr.Identifier(ol.expr.functions.INEQ), [container.property, container.value])
+    }else {
+      filter = new ol.expr.Comparison(ol.expr.ComparisonOp.NEQ, container.property, container.value)
+    }
+    obj.filters.push(filter)
+  }, "PropertyIsLike":function(node, obj) {
+    var container = {};
+    this.readChildNodes(node, container);
+    var args = [];
+    args.push(container.property, container.value, new ol.expr.Literal(node.getAttribute("wildCard")), new ol.expr.Literal(node.getAttribute("singleChar")), new ol.expr.Literal(node.getAttribute("escapeChar")), new ol.expr.Literal(node.getAttribute("matchCase")));
+    obj.filters.push(new ol.expr.Call(new ol.expr.Identifier(ol.expr.functions.LIKE), args))
+  }});
+  goog.object.extend(this.writers["http://www.opengis.net/ogc"], {"PropertyIsEqualTo":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsEqualTo");
+    var property, value;
+    if(filter instanceof ol.expr.Call) {
+      var args = filter.getArgs();
+      property = args[0];
+      value = args[1];
+      node.setAttribute("matchCase", false)
+    }else {
+      property = filter.getLeft();
+      value = filter.getRight()
+    }
+    this.writeNode("PropertyName", property, null, node);
+    this.writeOgcExpression(value, node);
+    return node
+  }, "PropertyIsNotEqualTo":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsNotEqualTo");
+    var property, value;
+    if(filter instanceof ol.expr.Call) {
+      var args = filter.getArgs();
+      property = args[0];
+      value = args[1];
+      node.setAttribute("matchCase", false)
+    }else {
+      property = filter.getLeft();
+      value = filter.getRight()
+    }
+    this.writeNode("PropertyName", property, null, node);
+    this.writeOgcExpression(value, node);
+    return node
+  }, "PropertyIsLike":function(filter) {
+    var node = this.createElementNS("ogc:PropertyIsLike");
+    var args = filter.getArgs();
+    goog.asserts.assert(args[2] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[3] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[4] instanceof ol.expr.Literal);
+    node.setAttribute("wildCard", args[2].getValue());
+    node.setAttribute("singleChar", args[3].getValue());
+    node.setAttribute("escapeChar", args[4].getValue());
+    if(goog.isDefAndNotNull(args[5])) {
+      goog.asserts.assert(args[5] instanceof ol.expr.Literal);
+      node.setAttribute("matchCase", args[5].getValue())
+    }
+    var property = args[0];
+    if(goog.isDef(property)) {
+      this.writeNode("PropertyName", property, null, node)
+    }
+    this.writeNode("Literal", args[1], null, node);
+    return node
+  }, "BBOX":function(filter) {
+    var node = this.createElementNS("ogc:BBOX");
+    var args = filter.getArgs();
+    goog.asserts.assert(args[0] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[1] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[2] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[3] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[4] instanceof ol.expr.Literal);
+    var property = args[5], bbox = [args[0].getValue(), args[1].getValue(), args[2].getValue(), args[3].getValue()], projection = args[4].getValue();
+    if(goog.isDefAndNotNull(property)) {
+      this.writeNode("PropertyName", property, null, node)
+    }
+    var box = this.writeNode("Envelope", bbox, "http://www.opengis.net/gml");
+    if(goog.isDefAndNotNull(projection)) {
+      box.setAttribute("srsName", projection)
+    }
+    node.appendChild(box);
+    return node
+  }, "SortBy":function(sortProperties) {
+    var node = this.createElementNS("ogc:SortBy");
+    for(var i = 0, l = sortProperties.length;i < l;i++) {
+      this.writeNode("SortProperty", sortProperties[i], null, node)
+    }
+    return node
+  }, "SortProperty":function(sortProperty) {
+    var node = this.createElementNS("ogc:SortProperty");
+    this.writeNode("PropertyName", sortProperty["property"], null, node);
+    goog.asserts.assert(sortProperty["order"] instanceof ol.expr.Literal);
+    this.writeNode("SortOrder", sortProperty["order"].getValue() == "DESC" ? "DESC" : "ASC", null, node);
+    return node
+  }, "SortOrder":function(value) {
+    var node = this.createElementNS("ogc:SortOrder");
+    node.appendChild(this.createTextNode(value));
+    return node
+  }});
+  this.setGmlParser(new ol.parser.ogc.GML_v3)
+};
+goog.inherits(ol.parser.ogc.Filter_v1_1_0, ol.parser.ogc.Filter_v1);
+ol.parser.ogc.Filter_v1_1_0.prototype.writeSpatial_ = function(filter, name) {
+  var node = this.createElementNS("ogc:" + name);
+  var args = filter.getArgs();
+  var property, geom = null, bbox, call, projection;
+  if(args[0] instanceof ol.expr.Literal && goog.isNumber(args[0].getValue())) {
+    goog.asserts.assert(args[1] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[2] instanceof ol.expr.Literal);
+    goog.asserts.assert(args[3] instanceof ol.expr.Literal);
+    bbox = [args[0].getValue(), args[1].getValue(), args[2].getValue(), args[3].getValue()];
+    projection = args[4];
+    property = args[5]
+  }else {
+    if(args[0] instanceof ol.expr.Literal && args[0].getValue() instanceof ol.geom.Geometry) {
+      geom = args[0].getValue();
+      if(name === "DWithin") {
+        projection = args[3];
+        property = args[4]
+      }else {
+        projection = args[1];
+        property = args[2]
+      }
+    }else {
+      if(args[0] instanceof ol.expr.Call) {
+        call = args[0];
+        if(name === "DWithin") {
+          projection = args[3];
+          property = args[4]
+        }else {
+          projection = args[1];
+          property = args[2]
+        }
+      }
+    }
+  }
+  if(goog.isDefAndNotNull(property)) {
+    this.writeNode("PropertyName", property, null, node)
+  }
+  if(goog.isDef(call)) {
+    this.writeNode("Function", call, null, node)
+  }else {
+    var child;
+    if(geom !== null) {
+      child = this.writeNode("_geometry", geom, this.gml_.featureNS).firstChild
+    }else {
+      if(bbox.length === 4) {
+        child = this.writeNode("Envelope", bbox, "http://www.opengis.net/gml")
+      }
+    }
+    if(goog.isDef(child)) {
+      goog.asserts.assert(projection instanceof ol.expr.Literal);
+      if(goog.isDefAndNotNull(projection.getValue())) {
+        child.setAttribute("srsName", projection.getValue())
+      }
+      node.appendChild(child)
+    }
+  }
+  return node
+};
+goog.provide("ol.parser.ogc.Versioned");
+goog.require("goog.dom.xml");
+goog.require("ol.parser.ogc.ExceptionReport");
+ol.parser.ogc.Versioned = function(opt_options) {
+  var options = goog.isDef(opt_options) ? opt_options : {};
+  this.options = options;
+  this.defaultVersion = options.defaultVersion || null;
+  this.version = options.version;
+  this.profile = options.profile;
+  if(goog.isDef(options.allowFallback)) {
+    this.allowFallback = options.allowFallback
+  }else {
+    this.allowFallback = false
+  }
+  if(goog.isDef(options.stringifyOutput)) {
+    this.stringifyOutput = options.stringifyOutput
+  }else {
+    this.stringifyOutput = false
+  }
+};
+ol.parser.ogc.Versioned.prototype.getVersion = function(root, opt_options) {
+  var version;
+  if(root) {
+    version = this.version;
+    if(!version) {
+      version = root.getAttribute("version");
+      if(!version) {
+        version = this.defaultVersion
+      }
+    }
+  }else {
+    version = opt_options && opt_options.version || this.version || this.defaultVersion
+  }
+  return version
+};
+ol.parser.ogc.Versioned.prototype.getParser = function(version) {
+  version = version || this.defaultVersion;
+  var profile = this.profile ? "_" + this.profile : "";
+  if(!this.parser || this.parser.VERSION != version) {
+    var format = this.parsers["v" + version.replace(/\./g, "_") + profile];
+    if(!format) {
+      if(profile !== "" && this.allowFallback) {
+        profile = "";
+        format = this.parsers["v" + version.replace(/\./g, "_") + profile]
+      }
+      if(!format) {
+        throw"Can't find a parser for version " + version + profile;
+      }
+    }
+    this.parser = new format(this.options)
+  }
+  return this.parser
+};
+ol.parser.ogc.Versioned.prototype.write = function(obj, opt_options) {
+  var version = this.getVersion(null, opt_options);
+  this.parser = this.getParser(version);
+  var root = this.parser.write(obj, opt_options);
+  if(this.stringifyOutput === false) {
+    return root
+  }else {
+    return goog.dom.xml.serialize(root)
+  }
+};
+ol.parser.ogc.Versioned.prototype.read = function(data, opt_options) {
+  if(goog.isString(data)) {
+    data = goog.dom.xml.loadXml(data)
+  }
+  var root = data.documentElement;
+  var version = this.getVersion(root);
+  this.parser = this.getParser(version);
+  var obj = this.parser.read(data, opt_options);
+  var errorProperty = this.parser.errorProperty || null;
+  if(errorProperty !== null && obj[errorProperty] === undefined) {
+    var format = new ol.parser.ogc.ExceptionReport;
+    obj.error = format.read(data)
+  }
+  obj.version = version;
+  return obj
+};
+goog.provide("ol.parser.ogc.Filter");
+goog.require("ol.parser.ogc.Filter_v1_0_0");
+goog.require("ol.parser.ogc.Filter_v1_1_0");
+goog.require("ol.parser.ogc.Versioned");
+ol.ENABLE_OGCFILTER_1_0_0 = true;
+ol.ENABLE_OGCFILTER_1_1_0 = true;
+ol.parser.ogc.Filter = function(opt_options) {
+  opt_options = opt_options || {};
+  opt_options["defaultVersion"] = "1.0.0";
+  this.parsers = {};
+  if(ol.ENABLE_OGCFILTER_1_0_0) {
+    this.parsers["v1_0_0"] = ol.parser.ogc.Filter_v1_0_0
+  }
+  if(ol.ENABLE_OGCFILTER_1_1_0) {
+    this.parsers["v1_1_0"] = ol.parser.ogc.Filter_v1_1_0
+  }
+  goog.base(this, opt_options)
+};
+goog.inherits(ol.parser.ogc.Filter, ol.parser.ogc.Versioned);
 goog.provide("ol.parser.ogc.OWSCommon_v1");
 goog.require("ol.parser.XML");
 ol.parser.ogc.OWSCommon_v1 = function() {
@@ -30148,85 +31055,6 @@ ol.parser.ogc.OWSCommon_v1_1_0 = function() {
   }})
 };
 goog.inherits(ol.parser.ogc.OWSCommon_v1_1_0, ol.parser.ogc.OWSCommon_v1);
-goog.provide("ol.parser.ogc.Versioned");
-goog.require("goog.dom.xml");
-goog.require("ol.parser.ogc.ExceptionReport");
-ol.parser.ogc.Versioned = function(opt_options) {
-  var options = goog.isDef(opt_options) ? opt_options : {};
-  this.options = options;
-  this.defaultVersion = options.defaultVersion || null;
-  this.version = options.version;
-  this.profile = options.profile;
-  if(goog.isDef(options.allowFallback)) {
-    this.allowFallback = options.allowFallback
-  }else {
-    this.allowFallback = false
-  }
-  if(goog.isDef(options.stringifyOutput)) {
-    this.stringifyOutput = options.stringifyOutput
-  }else {
-    this.stringifyOutput = false
-  }
-};
-ol.parser.ogc.Versioned.prototype.getVersion = function(root, opt_options) {
-  var version;
-  if(root) {
-    version = this.version;
-    if(!version) {
-      version = root.getAttribute("version");
-      if(!version) {
-        version = this.defaultVersion
-      }
-    }
-  }else {
-    version = opt_options && opt_options.version || this.version || this.defaultVersion
-  }
-  return version
-};
-ol.parser.ogc.Versioned.prototype.getParser = function(version) {
-  version = version || this.defaultVersion;
-  var profile = this.profile ? "_" + this.profile : "";
-  if(!this.parser || this.parser.VERSION != version) {
-    var format = this.parsers["v" + version.replace(/\./g, "_") + profile];
-    if(!format) {
-      if(profile !== "" && this.allowFallback) {
-        profile = "";
-        format = this.parsers["v" + version.replace(/\./g, "_") + profile]
-      }
-      if(!format) {
-        throw"Can't find a parser for version " + version + profile;
-      }
-    }
-    this.parser = new format(this.options)
-  }
-  return this.parser
-};
-ol.parser.ogc.Versioned.prototype.write = function(obj, opt_options) {
-  var version = this.getVersion(null, opt_options);
-  this.parser = this.getParser(version);
-  var root = this.parser.write(obj, opt_options);
-  if(this.stringifyOutput === false) {
-    return root
-  }else {
-    return goog.dom.xml.serialize(root)
-  }
-};
-ol.parser.ogc.Versioned.prototype.read = function(data, opt_options) {
-  if(goog.isString(data)) {
-    data = goog.dom.xml.loadXml(data)
-  }
-  var root = data.documentElement;
-  var version = this.getVersion(root);
-  this.parser = this.getParser(version);
-  var obj = this.parser.read(data, opt_options);
-  var errorProperty = this.parser.errorProperty || null;
-  if(errorProperty !== null && obj[errorProperty] === undefined) {
-    var format = new ol.parser.ogc.ExceptionReport;
-    obj.error = format.read(data)
-  }
-  obj.version = version;
-  return obj
-};
 goog.provide("ol.parser.ogc.WMSCapabilities_v1");
 goog.require("goog.dom.xml");
 goog.require("goog.object");
@@ -32330,6 +33158,10 @@ goog.require("ol.parser.TopoJSON");
 goog.require("ol.parser.WKT");
 goog.require("ol.parser.XML");
 goog.require("ol.parser.ogc.ExceptionReport");
+goog.require("ol.parser.ogc.Filter");
+goog.require("ol.parser.ogc.Filter_v1");
+goog.require("ol.parser.ogc.Filter_v1_0_0");
+goog.require("ol.parser.ogc.Filter_v1_1_0");
 goog.require("ol.parser.ogc.GML");
 goog.require("ol.parser.ogc.GML_v2");
 goog.require("ol.parser.ogc.GML_v3");
