@@ -105,6 +105,7 @@
             if (layer.type == 'wmts') {
               olLayer = new ol.layer.TileLayer({
                 id: id,
+                timestamps: (layer.timeEnabled) ? layer.timestamps : undefined,
                 source: new ol.source.WMTS({
                   attributions: [
                     getAttribution(layer.attribution)
