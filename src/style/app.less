@@ -345,10 +345,6 @@ a .ga-icon-separator {
   }
 }
 
-.tooltip-inner {
-  text-align: left;
-}
-
 // ****** MODAL
 .modal {
   overflow: auto;
@@ -546,3 +542,17 @@ ul.panel-body-wide {
 .tt-hint {
   display: none !important;
 }
+
+.ga-tooltip {
+  @media (max-height: @screen-phone) {
+    width: 300px;
+    max-height: 450px;
+    max-width: 300px;
+  }
+}
+
+.tooltip-inner {
+  text-align: left;
+}
+
+
