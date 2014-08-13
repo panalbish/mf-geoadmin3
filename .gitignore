@@ -1,16 +1,20 @@
 /node_modules
 /src/deps.js
+/src/lib/fastclick.js
 /src/style/app.css
+/src/style/print.css
 /src/index.html
 /src/mobile.html
 /src/TemplateCacheModule.js
-/prod
+/prd
 /.build-artefacts
 /apache/app.conf
 /test/karma-conf-dev.js
 /test/karma-conf-prod.js
 /deploy/deploy-branch.cfg
-
+/src/locales/*.csv
+/scripts/00-*.conf
+rc_branch
 # FIXME
 # The following are developer-specific and should probably be in the
 # developers' .gitconfig file.

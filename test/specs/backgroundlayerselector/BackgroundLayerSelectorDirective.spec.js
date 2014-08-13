@@ -6,16 +6,19 @@ describe('ga_backgroundlayerselector_directive', function() {
 
     map = new ol.Map({});
 
-    layer1 = new ol.layer.TileLayer({
+    layer1 = new ol.layer.Tile({
       source: new ol.source.OSM()
     });
 
-    layer2 = new ol.layer.TileLayer({
+    layer2 = new ol.layer.Tile({
       source: new ol.source.OSM()
     });
 
     module(function($provide) {
       $provide.value('gaLayers', {
+        getLayer: function(id) {
+          return {}; 
+        },
         getOlLayerById: function(id) {
           return id == 'foo' ? layer1 : layer2;
         },
@@ -42,7 +45,7 @@ describe('ga_backgroundlayerselector_directive', function() {
       $compile(element)($rootScope);
       $rootScope.$digest();
 
-      $rootScope.$broadcast('gaLayersChange');
+      $rootScope.$broadcast('gaLayersChange', {labelsOnly: false});
       $rootScope.$digest();
     });
 
@@ -66,7 +69,7 @@ describe('ga_backgroundlayerselector_directive', function() {
       var layers = map.getLayers();
       var numLayers = layers.getLength();
       expect(numLayers).to.equal(1);
-      expect(layers.getAt(0)).to.be(layer1);
+      expect(layers.item(0)).to.be(layer1);
     });
   });
 
@@ -78,7 +81,7 @@ describe('ga_backgroundlayerselector_directive', function() {
       var layers = map.getLayers();
       var numLayers = layers.getLength();
       expect(numLayers).to.equal(1);
-      expect(layers.getAt(0)).to.be(layer2);
+      expect(layers.item(0)).to.be(layer2);
     });
   });
 
@@ -107,7 +110,7 @@ describe('ga_backgroundlayerselector_directive', function() {
 
       // add an overlay
       layers.push(
-          new ol.layer.TileLayer({source: new ol.source.OSM()}));
+          new ol.layer.Tile({source: new ol.source.OSM()}));
       numLayers = layers.getLength();
       expect(numLayers).to.equal(1);
 

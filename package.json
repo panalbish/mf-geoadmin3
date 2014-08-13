@@ -2,6 +2,7 @@
   "name": "geoadmin3",
   "version": "3.0.0",
   "description": "GeoAdmin 3 Application",
+  "_scripts": { "test": "node test/selenium/tests.js" },
   "repository": {
     "type": "git",
     "url": "git://github.com/geoadmin/mf-geoadmin3"
@@ -10,10 +11,10 @@
   "readmeFileName": "README.md",
   "devDependencies": {
     "less": "1.4.0",
-    "karma": "0.8.5"
-  },
-  "scripts": {
-    "test": "./node_modules/.bin/karma start test/karma-conf-prod.js --single-run"
+    "karma": "0.8.5",
+    "ng-annotate": "0.2.0",
+    "browserstack": "1.0.1",
+    "browserstack-webdriver": "2.39.2"
   }
 }
 

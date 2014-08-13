@@ -1,18 +1,17 @@
 (function() {
   goog.provide('ga_topic_directive');
 
+  goog.require('ga_map_service');
   goog.require('ga_permalink');
-  goog.require('ga_urlutils_service');
 
   var module = angular.module('ga_topic_directive', [
     'pascalprecht.translate',
-    'ga_permalink',
-    'ga_urlutils_service'
+    'ga_map_service',
+    'ga_permalink'
   ]);
 
   module.directive('gaTopic',
-      ['$rootScope', '$http', 'gaPermalink', 'gaUrlUtils',
-        function($rootScope, $http, gaPermalink, gaUrlUtils) {
+      function($rootScope, $http, gaPermalink, gaLayers) {
         return {
           restrict: 'A',
           replace: true,
@@ -21,7 +20,8 @@
               ((attrs.gaTopicUi == 'select') ? 'select.html' : 'html');
           },
           scope: {
-            options: '=gaTopicOptions'
+            options: '=gaTopicOptions',
+            map: '=gaTopicMap'
           },
           link: function(scope, element, attrs) {
             var options = scope.options;
@@ -56,14 +56,14 @@
               return res;
             }
 
-            var url = gaUrlUtils.append(options.url, 'callback=JSON_CALLBACK');
-            $http.jsonp(url).then(function(result) {
+            $http.get(options.url).then(function(result) {
               scope.topics = result.data.topics;
               angular.forEach(scope.topics, function(value) {
                 value.label = value.id;
-                value.thumbnail = 'http://placehold.it/110x60';
+                value.tooltip = 'topic_' + value.id + '_tooltip';
+                value.thumbnail =
+                    options.thumbnailUrlTemplate.replace('{Topic}', value.id);
                 value.langs = extendLangs(value.langs);
-                value.bgLayer = value.defaultBackgroundLayer;
               });
               initTopics();
             });
@@ -88,9 +88,12 @@
                   }
                 }
               }
+              $('.ga-topic-item').tooltip({
+                placement: 'bottom'
+              });
             });
 
          }
        };
-      }]);
+      });
 })();

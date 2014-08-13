@@ -1,44 +1,90 @@
-.ga-catalogitem-node {
-  a {
-    color: black;
-    display: block;
-    text-decoration: none;
-    &:hover, &:focus {
+[ga-catalogtree] {
+   
+  .ga-catalogitem-node {
+    
+    a {
+      color: black;
+      display: block;
+      text-decoration: none;
+      &:hover, &:focus {
+        color: #666;
+      }
+    }
+
+    ul {
+      padding-left: 1.6em;
+      
+      ul ul {
+        padding-left: 2em;
+      }
+    }
+
+    .icon-collapse-alt, .icon-expand-alt {
+      float: left;
+      padding-top: 2px;
+      padding-right: 3px;
+    }
+  }
+  
+  .ga-catalogitem-template {
+    background-color: #fff;
+
+    .ga-catalogitem-preview {
       color: #666;
+      cursor: pointer;
+    }
+
+    .ga-catalogitem-selected {
+      color: #f00;
     }
   }
-  ul {
-    padding-left: 1.6em;
-    ul ul {
-      padding-left: 2em;
+
+  .ga-catalogitem-leaf {
+    position: relative;
+    
+    i {
+      position: absolute;
+      right: 0;
+      top: 0em;
+      line-height: 32px;
+      
+      @media (max-width: @screen-tablet) {
+        font-size: 26px;
+      }
+    }
+    .icon-warning-sign {
+      right: 1em;
+    }
+    i, label input {
+      cursor: pointer;
+    }
+    
+    .panel-subtitle;
+    border-bottom-style: dashed;
+    border-bottom-color: #c7c7c7;
+
+    label {
+      font-weight: normal;
+      width: 100%;
+      cursor: pointer;
+    }
+    input[type=checkbox] {
+      margin-left: .5em;
+      margin-right: .5em;
     }
   }
-  ul.closed {
-    display: none;
-  }
 
-  .icon-collapse-alt, .icon-expand-alt {
-    float: left;
-    padding-top: 2px;
-    padding-right: 3px;
-  }
-}
+  .ga-catalogitem-entry {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
 
-.ga-catalogitem-leaf {
-  position: relative;
-  i {
-    position: absolute;
-    right: 0;
-    top: .8em;
-  }
-  .icon-warning-sign {
-    right: 1em;
+    label {
+      padding-right: 12px;
+      
+      @media (max-width: @screen-tablet) {
+        padding-right: 26px;
+      }
+    }
   }
 }
-
-.ga-catalogitem-entry {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-left: 0px;
-}
-

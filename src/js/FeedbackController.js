@@ -4,9 +4,9 @@
   var module = angular.module('ga_feedback_controller', []);
 
   module.controller('GaFeedbackController',
-      ['$scope', 'gaGlobalOptions', function($scope, gaGlobalOptions) {
+      function($scope, gaGlobalOptions) {
         $scope.options = {
-          feedbackUrl: gaGlobalOptions.baseUrlPath + '/feedback'
+          feedbackUrl: gaGlobalOptions.apiUrl + '/feedback'
         };
 
         // Feedback success and error modals are hidden by default.
@@ -33,6 +33,6 @@
           $scope.response = undefined;
         });
 
-      }]);
+      });
 
 })();

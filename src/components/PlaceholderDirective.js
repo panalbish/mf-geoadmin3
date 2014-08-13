@@ -13,7 +13,7 @@
    *  otherwise the poly-fill is used
    */
   module.directive('placeholder',
-    ['$timeout', function($timeout) {
+    function($timeout) {
 
     if ('placeholder' in document.createElement('input') &&
         'placeholder' in document.createElement('textarea')) {
@@ -25,20 +25,42 @@
         if (attrs.type === 'password') {
           return;
         }
+
+        var isPlaceHolderDisplayed;
+
+        var displayPlaceholder = function(elt) {
+            elt.val(elt.attr('placeholder'));
+            elt.css('color', 'darkgray');
+            isPlaceHolderDisplayed = true;
+        };
+
+        var hidePlaceholder = function(elt) {
+            elt.val('');
+            elt.css('color', 'inherit');
+            isPlaceHolderDisplayed = false;
+        };
+
         $timeout(function() {
-          $(elm).val(attrs.placeholder).focus(function(evt) {
+          displayPlaceholder(elm);
+          elm.focus(function(evt) {
             var elt = $(evt.target);
-            if (elt.val() == elt.attr('placeholder')) {
-              elt.val('');
+            if (isPlaceHolderDisplayed) {
+              hidePlaceholder(elt);
             }
           }).blur(function(evt) {
             var elt = $(evt.target);
             if (elt.val() == '') {
-              elt.val(elt.attr('placeholder'));
+              displayPlaceholder(elt);
             }
           });
         });
+
+        attrs.$observe('placeholder', function() {
+          if (isPlaceHolderDisplayed) {
+            displayPlaceholder(elm);
+          }
+        });
       }
     };
-  }]);
+  });
 })();

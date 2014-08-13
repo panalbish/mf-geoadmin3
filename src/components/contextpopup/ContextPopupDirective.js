@@ -9,12 +9,8 @@
   ]);
 
   module.directive('gaContextPopup',
-      ['$http', '$q', '$timeout', 'gaPermalink',
-          'gaUrlUtils', 'gaBrowserSniffer',
-          function($http, $q, $timeout, gaPermalink,
+      function($http, $q, $timeout, gaPermalink,
               gaUrlUtils, gaBrowserSniffer) {
-          var lv03tolv95Url =
-              'http://tc-geodesy.bgdi.admin.ch/reframe/lv03tolv95?cb=JSON_CALLBACK';
           return {
             restrict: 'A',
             replace: true,
@@ -27,6 +23,8 @@
               var heightUrl = gaUrlUtils.append(scope.options.heightUrl,
                   'callback=JSON_CALLBACK');
               var qrcodeUrl = scope.options.qrcodeUrl;
+              var lv03tolv95Url = gaUrlUtils.append(scope.options.lv03tolv95Url,
+                  'cb=JSON_CALLBACK');
 
               // The popup content is updated (a) on contextmenu events,
               // and (b) when the permalink is updated.
@@ -38,100 +36,160 @@
               var popoverShown = false;
 
               var overlay = new ol.Overlay({
-                map: map,
-                element: element[0]
+                element: element[0],
+                stopEvent: true
               });
+              map.addOverlay(overlay);
 
               scope.showQR = !gaBrowserSniffer.mobile;
 
+              var formatCoordinates = function(coord, prec, ignoreThousand) {
+                var fCoord = ol.coordinate.toStringXY(coord, prec);
+                if (!ignoreThousand) {
+                   fCoord = fCoord.replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+                }
+                return fCoord;
+              };
+
+              var coordinatesFormatUTM = function(coordinates, zone) {
+                var coord = ol.coordinate.toStringXY(coordinates, 0).
+                  replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+                return coord + ' ' + zone;
+              };
+
               var handler = function(event) {
+                event.stopPropagation();
                 event.preventDefault();
 
-                var pixel = event.getPixel();
-                coord21781 = event.getCoordinate();
+                //On Max, left-click with ctrlKey also fires
+                //the 'contextmenu' event. But this conflicts
+                //with selectByRectangl feature (in featuretree
+                //directive). So we bail out here if
+                //ctrlKey is pressed
+                if (event.ctrlKey) {
+                  return;
+                }
+
+                var pixel = (event.originalEvent) ?
+                    map.getEventPixel(event.originalEvent) :
+                    event.pixel;
+                coord21781 = (event.originalEvent) ?
+                    map.getEventCoordinate(event.originalEvent) :
+                    event.coordinate;
                 var coord4326 = ol.proj.transform(coord21781,
                     'EPSG:21781', 'EPSG:4326');
+                var coord2056 = ol.proj.transform(coord21781,
+                    'EPSG:21781', 'EPSG:2056');
 
-                // recenter on mobile devices
-                if (gaBrowserSniffer.mobile) {
+                // recenter on phones
+                if (gaBrowserSniffer.phone) {
                   var pan = ol.animation.pan({
                     duration: 200,
                     source: view.getCenter()
                   });
-                  map.addPreRenderFunction(pan);
+                  map.beforeRender(pan);
                   view.setCenter(coord21781);
                 }
 
-                // The $http service does not send requests immediately but
-                // wait for the "nextTick". Not sure this is bug in Angular.
-                // https://github.com/angular/angular.js/issues/2442 reports
-                // it a bug. As a workaround we call $http in an $apply
-                // callback.
+                scope.coord21781 = formatCoordinates(coord21781, 1);
+                scope.coord4326 = formatCoordinates(coord4326, 5, true);
+                scope.coord2056 = formatCoordinates(coord2056, 2) + ' *';
+                if (coord4326[0] < 6 && coord4326[0] >= 0) {
+                  var utm_31n = ol.proj.transform(coord4326,
+                    'EPSG:4326', 'EPSG:32631');
+                  scope.coordutm = coordinatesFormatUTM(utm_31n, '(zone 31N)');
+                } else if (coord4326[0] < 12 && coord4326[0] >= 6) {
+                  var utm_32n = ol.proj.transform(coord4326,
+                    'EPSG:4326', 'EPSG:32632');
+                  scope.coordutm = coordinatesFormatUTM(utm_32n, '(zone 32N)');
+                } else {
+                  return '-';
+                }
+
+                coord4326['lon'] = coord4326[0];
+                coord4326['lat'] = coord4326[1];
+                scope.coordmgrs = window.Proj4js.util.MGRS.forward(coord4326).
+                  replace(/(.{5})/g, '$1 ');
+                scope.altitude = '-';
+
+                // A digest cycle is necessary for $http requests to be
+                // actually sent out. Angular-1.2.0rc2 changed the $evalSync
+                // function of the $rootScope service for exactly this. See
+                // Angular commit 6b91aa0a18098100e5f50ea911ee135b50680d67.
+                // We use a conservative approach and call $apply ourselves
+                // here, but we instead could also let $evalSync trigger a
+                // digest cycle for us.
                 scope.$apply(function() {
-                  $q.all({
-                    height: $http.jsonp(heightUrl, {
-                      params: {
-                        easting: coord21781[0],
-                        northing: coord21781[1],
-                        elevation_model: 'COMB'
-                      }
-                    }),
-                    lv03tolv95: $http.jsonp(lv03tolv95Url, {
-                      params: {
-                        easting: coord21781[0],
-                        northing: coord21781[1]
-                      }
-                    })
-                  }).then(function(results) {
-                    var coord2056 = results.lv03tolv95.data.coordinates;
 
-                    scope.coord21781 = ol.coordinate.toStringXY(coord21781, 1);
-                    scope.coord4326 = ol.coordinate.toStringXY(coord4326, 5);
-                    scope.coord2056 = ol.coordinate.toStringXY(coord2056, 2);
-                    scope.altitude = parseFloat(results.height.data.height);
-
-                    updatePopupLinks();
-
-                    view.once('change:center', function() {
-                      hidePopover();
-                    });
-
-                    overlay.setPosition(coord21781);
-                    showPopover();
-
+                  $http.jsonp(heightUrl, {
+                    params: {
+                      easting: coord21781[0],
+                      northing: coord21781[1],
+                      elevation_model: 'COMB'
+                    }
+                  }).success(function(response) {
+                    scope.altitude = parseFloat(response.height);
                   });
+
+                  $http.jsonp(lv03tolv95Url, {
+                    params: {
+                      easting: coord21781[0],
+                      northing: coord21781[1]
+                    }
+                  }).success(function(response) {
+                    coord2056 = response.coordinates;
+                    scope.coord2056 = formatCoordinates(coord2056, 2);
+                  });
+
                 });
+
+                updatePopupLinks();
+
+                view.once('change:center', function() {
+                  hidePopover();
+                });
+
+                overlay.setPosition(coord21781);
+                showPopover();
               };
 
-              // Listen to contextmenu events from the map.
-              map.on('contextmenu', handler);
 
-              // On touch devices, display the context popup after a
-              // long press (750ms)
-              var startPixel, holdPromise;
-              map.on('touchstart', function(event) {
-                $timeout.cancel(holdPromise);
-                startPixel = event.getPixel();
-                holdPromise = $timeout(function() {
-                  handler(event);
-                }, 750, false);
-              });
-              map.on('touchend', function(event) {
-                $timeout.cancel(holdPromise);
-                startPixel = undefined;
-              });
-              map.on('touchmove', function(event) {
-                if (startPixel) {
-                  var pixel = event.getPixel();
-                  var deltaX = Math.abs(startPixel[0] - pixel[0]);
-                  var deltaY = Math.abs(startPixel[1] - pixel[1]);
-                  if (deltaX + deltaY > 2) {
-                    $timeout.cancel(holdPromise);
-                    startPixel = undefined;
+              if (gaBrowserSniffer.events.menu) {
+                // On surface tablet a 'contextmenu' event is triggered
+                // on long press.
+                // Listen to contextmenu events from the viewport.
+                $(map.getViewport()).on(gaBrowserSniffer.events.menu, handler);
+                element.on(gaBrowserSniffer.events.menu, 'a', function(e) {
+                  e.stopPropagation();
+                });
+
+              } else {
+                // On touch devices and browsers others than ie10, display the
+                // context popup after a long press (300ms)
+                var startPixel, holdPromise;
+                map.on('pointerdown', function(event) {
+                  $timeout.cancel(holdPromise);
+                  startPixel = event.pixel;
+                  holdPromise = $timeout(function() {
+                    handler(event);
+                  }, 300, false);
+                });
+                map.on('pointerup', function(event) {
+                  $timeout.cancel(holdPromise);
+                  startPixel = undefined;
+                });
+                map.on('pointermove', function(event) {
+                  if (startPixel) {
+                    var pixel = event.pixel;
+                    var deltaX = Math.abs(startPixel[0] - pixel[0]);
+                    var deltaY = Math.abs(startPixel[1] - pixel[1]);
+                    if (deltaX + deltaY > 6) {
+                      $timeout.cancel(holdPromise);
+                      startPixel = undefined;
+                    }
                   }
-                }
-              });
-
+                });
+              }
               // Listen to permalink change events from the scope.
               scope.$on('gaPermalinkChange', function(event) {
                 if (angular.isDefined(coord21781) && popoverShown) {
@@ -139,7 +197,10 @@
                 }
               });
 
-              scope.hidePopover = function() {
+              scope.hidePopover = function(evt) {
+                if (evt) {
+                  evt.stopPropagation();
+                }
                 hidePopover();
               };
 
@@ -173,6 +234,5 @@
               }
             }
           };
-        }]);
-
+        });
 })();

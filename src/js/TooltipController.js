@@ -4,16 +4,12 @@
   var module = angular.module('ga_tooltip_controller', []);
 
   module.controller('GaTooltipController',
-      ['$scope', 'gaGlobalOptions',
-      function($scope, gaGlobalOptions) {
-
-        var baseUrl = gaGlobalOptions.serviceUrl + '/rest/services';
+      function($scope, gaGlobalOptions, gaBrowserSniffer) {
 
         $scope.options = {
-          tolerance: 5,
-          identifyUrlTemplate: baseUrl + '/{Topic}/MapServer/identify',
-          htmlUrlTemplate: baseUrl + '/{Topic}/MapServer/{Layer}/{Feature}/htmlpopup'
+          tolerance: gaBrowserSniffer.touchDevice ? 15 : 5,
+          identifyUrlTemplate: gaGlobalOptions.apiUrl + '/rest/services/{Topic}/MapServer/identify',
+          htmlUrlTemplate: gaGlobalOptions.cachedApiUrl + '/rest/services/{Topic}/MapServer/{Layer}/{Feature}/htmlPopup'
         };
-      }
-  ]);
+      });
 })();

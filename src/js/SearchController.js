@@ -4,17 +4,18 @@
   var module = angular.module('ga_search_controller', []);
 
   module.controller('GaSearchController',
-      ['$scope', 'gaGlobalOptions',
-        function($scope, gaGlobalOptions) {
+      function($scope, gaGlobalOptions) {
           var topicPlaceHolder = '--DUMMYTOPIC--';
-         
+
           $scope.options = {
-            serviceUrl: gaGlobalOptions.serviceUrl +  '/rest/services/' + 
+            searchUrl: gaGlobalOptions.apiUrl + '/rest/services/' +
                         topicPlaceHolder + '/SearchServer?',
+            featureUrl: gaGlobalOptions.cachedApiUrl +
+                        '/rest/services/{Topic}/MapServer/{Layer}/{Feature}',
             applyTopicToUrl: function (url, topic) {
               return url.replace(topicPlaceHolder, topic);
             }
-            };
-        }]);
+          };
+        });
 
 })();

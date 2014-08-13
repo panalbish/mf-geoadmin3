@@ -4,11 +4,11 @@
   var module = angular.module('ga_topic_controller', []);
 
   module.controller('GaTopicController',
-      ['$scope', 'gaGlobalOptions',
-        function($scope, gaGlobalOptions) {
+      function($scope, gaGlobalOptions) {
           $scope.options = {
             defaultTopicId: 'ech',
-            url: gaGlobalOptions.serviceUrl + '/rest/services'
+            thumbnailUrlTemplate: gaGlobalOptions.resourceUrl + 'img/{Topic}.jpg',
+            url: gaGlobalOptions.cachedApiUrl + '/rest/services'
           };
-      }]);
+      });
 })();

@@ -1,5 +1,2 @@
-source rc_dev
-
-export BASE_URL_PATH=/ltmom
-export SERVICE_URL=http://mf-chsdi30t.bgdi.admin.ch
-
+export API_URL=//mf-chsdi3.dev.bgdi.ch/ltmom
+export APACHE_BASE_PATH=/ltmom

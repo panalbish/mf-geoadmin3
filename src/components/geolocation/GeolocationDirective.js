@@ -2,29 +2,58 @@
   goog.provide('ga_geolocation_directive');
 
   goog.require('ga_permalink');
+  goog.require('ga_styles_service');
 
   var module = angular.module('ga_geolocation_directive', [
-    'ga_permalink'
+    'ga_permalink',
+    'ga_styles_service'
   ]);
 
-  module.directive('gaGeolocation', ['$parse', 'gaPermalink',
-        function($parse, gaPermalink) {
+  module.directive('gaGeolocation', function($parse, $window,
+      gaPermalink, gaStyleFactory) {
     return {
       restrict: 'A',
       scope: {
         map: '=gaGeolocationMap'
       },
-      template: '<a href="#geolocation" class="geolocation">',
-      replace: true,
+      templateUrl: 'components/geolocation/partials/geolocation.html',
       link: function(scope, element, attrs) {
+        var btnElt = $(element.children()[0]);
+
+        if (!('geolocation' in $window.navigator)) {
+          btnElt.addClass('ga-geolocation-error');
+          return;
+        }
+
+        // This boolean defines if the user has moved the map itself after the
+        // first change of position.
+        var userTakesControl = false;
+        // Defines if the geolocation control is zooming
+        var geolocationZooming = false;
         var map = scope.map;
         var view = map.getView().getView2D();
-        var geolocation = new ol.Geolocation();
-        geolocation.bindTo('projection', map.getView());
+        var accuracyFeature = new ol.Feature();
+        var positionFeature = new ol.Feature(new ol.geom.Point([0, 0]));
+        var featuresOverlay = new ol.FeatureOverlay({
+          features: [accuracyFeature, positionFeature],
+          style: gaStyleFactory.getStyle('geolocation')
+        });
+        var geolocation = new ol.Geolocation({
+          trackingOptions: {
+            maximumAge: 10000,
+            enableHighAccuracy: true,
+            timeout: 600000
+          }
+        });
+
+        // Animation
         // used to having a zoom animation when we click on the button,
         // but not when we are tracking the position.
         var first = true;
-        var locate = function(dest) {
+        var currentAccuracy = 0;
+        var locate = function() {
+          geolocationZooming = true;
+          var dest = geolocation.getPosition();
           if (dest) {
             var source = view.getCenter();
             var dist = Math.sqrt(Math.pow(source[0] - dest[0], 2),
@@ -41,17 +70,16 @@
             var bounce;
             if (first) {
               first = false;
-              var accuracy = geolocation.getAccuracy();
               var extent = [
-                dest[0] - accuracy,
-                dest[0] + accuracy,
-                dest[1] - accuracy,
-                dest[1] + accuracy
+                dest[0] - currentAccuracy,
+                dest[1] - currentAccuracy,
+                dest[0] + currentAccuracy,
+                dest[1] + currentAccuracy
               ];
               var size = map.getSize();
               var resolution = Math.max(
-                (extent[1] - extent[0]) / size[0],
-                (extent[3] - extent[2]) / size[1]);
+                (extent[2] - extent[0]) / size[0],
+                (extent[3] - extent[1]) / size[1]);
               resolution = view.constrainResolution(resolution, 0, 0);
               bounce = ol.animation.bounce({
                 duration: duration,
@@ -65,38 +93,90 @@
                 duration: duration,
                 start: start
               });
-              map.addPreRenderFunctions([pan, zoom, bounce]);
+              map.beforeRender(pan, zoom, bounce);
               view.setCenter(dest);
               view.setResolution(resolution);
-            } else {
+            } else if (!userTakesControl) {
               bounce = ol.animation.bounce({
                 duration: duration,
                 resolution: Math.max(view.getResolution(), dist / 1000),
                 start: start
               });
-              map.addPreRenderFunctions([pan, bounce]);
+              map.beforeRender(pan, bounce);
               view.setCenter(dest);
             }
           }
+          geolocationZooming = false;
         };
+
+        var updatePositionFeature = function() {
+          if (geolocation.getPosition()) {
+            positionFeature.getGeometry().setCoordinates(
+               geolocation.getPosition());
+          }
+        };
+
+        var updateAccuracyFeature = function() {
+          if (geolocation.getPosition() && geolocation.getAccuracy()) {
+            accuracyFeature.setGeometry(new ol.geom.Circle(
+                geolocation.getPosition(), geolocation.getAccuracy()));
+          }
+        };
+
+        // Geolocation control events
         geolocation.on('change:position', function(evt) {
-          locate(geolocation.getPosition());
+          btnElt.removeClass('ga-geolocation-error');
+          btnElt.addClass('ga-geolocation-tracking');
+          locate();
+          updatePositionFeature();
+          updateAccuracyFeature();
         });
+
+        geolocation.on('change:accuracy', function(evt) {
+          currentAccuracy = geolocation.getAccuracy();
+          updateAccuracyFeature();
+        });
+
         geolocation.on('change:tracking', function(evt) {
           var tracking = geolocation.getTracking();
           if (tracking) {
-            element.addClass('tracking');
             first = true;
+            userTakesControl = false;
+            featuresOverlay.setMap(map);
           } else {
             // stop tracking
-            element.removeClass('tracking');
+            btnElt.removeClass('ga-geolocation-tracking');
+            featuresOverlay.setMap(null);
           }
-
         });
-        element.bind('click', function(e) {
+
+        geolocation.on('error', function() {
+          btnElt.removeClass('ga-geolocation-tracking');
+          btnElt.addClass('ga-geolocation-error');
+        });
+
+        // Geolocation control bindings
+        geolocation.bindTo('projection', view);
+
+        // View events
+        var updateUserTakesControl = function() {
+          if (!geolocationZooming) {
+            userTakesControl = true;
+          }
+        };
+        view.on('change:center', updateUserTakesControl);
+        view.on('change:resolution', updateUserTakesControl);
+
+        // Button event
+        btnElt.bind('click', function(e) {
           e.preventDefault();
           var tracking = !geolocation.getTracking();
           geolocation.setTracking(tracking);
+          if (tracking) {
+            btnElt.addClass('ga-geolocation-tracking');
+          } else {
+            btnElt.removeClass('ga-geolocation-tracking');
+          }
 
           scope.$apply(function() {
             gaPermalink.updateParams({
@@ -105,8 +185,9 @@
           });
         });
 
+        // Init with permalink
         geolocation.setTracking(gaPermalink.getParams().geolocation == 'true');
       }
     };
-  }]);
+  });
 })();

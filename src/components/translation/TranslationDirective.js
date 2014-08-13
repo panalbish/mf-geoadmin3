@@ -7,8 +7,7 @@
   ]);
 
   module.directive('gaTranslationSelector',
-      ['$translate', '$window', 'gaPermalink',
-        function($translate, $window, gaPermalink) {
+      function($translate, $window, gaPermalink) {
           return {
             restrict: 'A',
             replace: true,
@@ -25,18 +24,20 @@
                 gaPermalink.updateParams({lang: value});
               });
 
-              function hasLang(langs) {
-                for (var i = 0; i < langs.length; i++) {
-                  if (langs[i].value === $translate.uses()) {
+              function topicSupportsLang(topic, lang) {
+                var i;
+                var langs = topic.langs;
+                for (i = 0; i < langs.length; i++) {
+                  if (langs[i].value === lang) {
                     return true;
                   }
                 }
                 return false;
-              };
+              }
 
               scope.$on('gaTopicChange', function(event, topic) {
-                if (!hasLang(topic.langs)) {
-                  // lang not in topic, fallback to default code
+                if (!topicSupportsLang(topic, scope.lang)) {
+                  // fallback to default code
                   scope.lang = scope.options.fallbackCode;
                 }
                 scope.options.langs = topic.langs;
@@ -47,5 +48,5 @@
                    $window.navigator.language).split('-')[0];
             }
           };
-      }]);
+      });
 })();

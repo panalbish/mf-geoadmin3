@@ -1,78 +1,11 @@
 (function() {
   goog.provide('ga_permalink_service');
 
-  var module = angular.module('ga_permalink_service', []);
+  goog.require('ga_urlutils_service');
 
-
-  // stolen from Angular
-  // https://github.com/angular/angular.js/blob/master/src/Angular.js
-  function encodeUriQuery(val, pctEncodeSpaces) {
-    return encodeURIComponent(val).
-        replace(/%40/gi, '@').
-        replace(/%3A/gi, ':').
-        replace(/%24/g, '$').
-        replace(/%2C/gi, ',').
-        replace(/%20/g, (pctEncodeSpaces ? '%20' : '+'));
-  }
-
-  // stolen from Angular
-  // https://github.com/angular/angular.js/blob/master/src/Angular.js
-  function parseKeyValue(keyValue) {
-    var obj = {}, kv, key;
-    angular.forEach((keyValue || '').split('&'), function(keyValue) {
-      if (keyValue) {
-        kv = keyValue.split('=');
-        key = tryDecodeURIComponent(kv[0]);
-        if (angular.isDefined(key)) {
-          obj[key] = angular.isDefined(kv[1]) ?
-              tryDecodeURIComponent(kv[1]) : true;
-        }
-      }
-    });
-    return obj;
-  }
-
-  // stolen from Angular
-  // https://github.com/angular/angular.js/blob/master/src/Angular.js
-  function toKeyValue(obj) {
-    var parts = [];
-    angular.forEach(obj, function(value, key) {
-      parts.push(encodeUriQuery(key, true) +
-          (value === true ? '' : '=' + encodeUriQuery(value, true)));
-    });
-    return parts.length ? parts.join('&') : '';
-  }
-
-  // stolen from Angular
-  // https://github.com/angular/angular.js/blob/master/src/Angular.js
-  function tryDecodeURIComponent(value) {
-    try {
-      return decodeURIComponent(value);
-    } catch (e) {
-      // Ignore any invalid uri component
-    }
-  }
-
-  function Permalink(b, p) {
-    var base = b;
-    var params = p;
-
-    this.getHref = function(p) {
-      var newParams = angular.extend({}, params);
-      if (angular.isDefined(p)) {
-        angular.extend(newParams, p);
-      }
-      return base + '?' + toKeyValue(newParams);
-    };
-
-    this.getParams = function() {
-      return params;
-    };
-
-    this.updateParams = function(p) {
-      angular.extend(params, p);
-    };
-  }
+  var module = angular.module('ga_permalink_service', [
+    'ga_urlutils_service'
+  ]);
 
   /**
    * The gaHistory service.
@@ -81,9 +14,9 @@
    */
   module.provider('gaHistory', function() {
 
-    this.$get = ['$window', function($window) {
+    this.$get = function($window) {
       return $window.history;
-    }];
+    };
 
   });
 
@@ -95,13 +28,43 @@
    * - getHref Get full permalink.
    * - getParams Get the search params.
    * - updateParams Update the search params.
+   * - deleteParam Delete a search param.
    *
-   * updateParams should be called during a digest cycle. If the browser
-   * supports the history API the link in the address bar is updated.
+   * updateParams and deleteParam should be called during a digest cycle.
+   * If the browser supports the history API the link in the address bar
+   * is updated.
    */
   module.provider('gaPermalink', function() {
-    this.$get = ['$window', '$rootScope', '$sniffer', 'gaHistory',
-      function($window, $rootScope, $sniffer, gaHistory) {
+    this.$get = function($window, $rootScope, $sniffer, gaHistory, gaUrlUtils) {
+
+        var Permalink = function(b, p) {
+          var base = b;
+          var params = p;
+
+          this.getHref = function(p) {
+            var newParams = angular.extend({}, params);
+            if (angular.isDefined(p)) {
+              angular.extend(newParams, p);
+            }
+            return base + '?' + gaUrlUtils.toKeyValue(newParams);
+          };
+
+          this.getParams = function() {
+            return params;
+          };
+
+          this.updateParams = function(p) {
+            angular.extend(params, p);
+          };
+
+          this.deleteParam = function(key) {
+             delete params[key];
+          };
+
+          this.refresh = function() {
+             gaHistory.replaceState(null, '', this.getHref());
+          };
+        };
 
         var loc = $window.location;
         var port = loc.port;
@@ -112,24 +75,27 @@
             loc.pathname;
 
         var permalink = new Permalink(
-            base, parseKeyValue(loc.search.substring(1)));
+            base, gaUrlUtils.parseKeyValue(loc.search.substring(1)));
 
-        if ($sniffer.history) {
-          var lastHref = loc.href;
-          $rootScope.$watch(function() {
-            var newHref = permalink.getHref();
-            if (lastHref !== newHref) {
-              $rootScope.$evalAsync(function() {
-                lastHref = newHref;
+        var lastHref = loc.href;
+        $rootScope.$watch(function() {
+          var newHref = permalink.getHref();
+          if (lastHref !== newHref) {
+            $rootScope.$evalAsync(function() {
+              lastHref = newHref;
+              if ($sniffer.history && !(document.fullscreenElement ||
+                  document.msFullscreenElement ||
+                  document.mozFullScreen ||
+                  document.webkitIsFullScreen)) {
                 gaHistory.replaceState(null, '', newHref);
-                $rootScope.$broadcast('gaPermalinkChange');
-              });
-            }
-          });
-        }
+              }
+              $rootScope.$broadcast('gaPermalinkChange');
+            });
+          }
+        });
 
         return permalink;
-      }];
+      };
   });
 
 })();

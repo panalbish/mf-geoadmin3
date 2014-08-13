@@ -4,12 +4,13 @@
   var module = angular.module('ga_contextpopup_controller', []);
 
   module.controller('GaContextPopupController',
-      ['$scope', 'gaGlobalOptions', function($scope, gaGlobalOptions) {
+      function($scope, gaGlobalOptions) {
         $scope.options = {
-          heightUrl: gaGlobalOptions.serviceUrl + "/rest/services/height",
-          qrcodeUrl: gaGlobalOptions.serviceUrl + "/qrcodegenerator"
+          heightUrl: gaGlobalOptions.apiUrl + '/rest/services/height',
+          qrcodeUrl: gaGlobalOptions.apiUrl + '/qrcodegenerator',
+          lv03tolv95Url: gaGlobalOptions.apiUrl + '/reframe/lv03tolv95'
         };
 
-      }]);
+      });
 
 })();

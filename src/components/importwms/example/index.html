@@ -6,6 +6,35 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no,
     width=device-width">
     <base href="../../../">
+    <script>
+      function toAbsURL(s) {
+        var l = location, h, p, f, i;
+        if (/^\w+:/.test(s)) {
+          return s;
+        }
+        h = l.protocol + '//' + l.host;
+        if (s.indexOf('/') == 0) {
+          return h + s;
+        }
+        p = l.pathname.replace(/\/[^\/]*$/, '');
+        f = s.match(/\.\.\//g);
+        if (f) {
+          s = s.substring(f.length * 3);
+          for (i = f.length; i--;) {
+            p = p.substring(0, p.lastIndexOf('/'));
+          }
+        }
+        return h + p + '/' + s;
+      }
+    </script>
+    <!--[if IE]>
+    <script>
+      (function() {
+        var base = document.getElementsByTagName('base')[0];
+        base.href = toAbsURL(base.href);
+      })();
+    </script>
+    <![endif]-->
     <link href="style/app.css" rel="stylesheet" media="screen">
     <style>
       #map {
@@ -32,9 +61,9 @@
     <div id="map" class="map" ga-map ga-map-map="map"></div>
 
     <script src="lib/jquery-2.0.3.js"></script>
-    <script src="lib/angular-1.2.0rc1.js"></script>
-    <script src="lib/angular-translate-0.9.4.js"></script>
-    <script src="lib/angular-translate-loader-static-files-0.1.2.js"></script>
+    <script src="lib/angular-1.2.9.js"></script>
+    <script src="lib/angular-translate-1.1.1.js"></script>
+    <script src="lib/angular-translate-loader-static-files-0.1.5.js"></script>
     <script src="lib/bootstrap-3.0.0.js"></script>
     <script src="lib/typeahead-0.9.3.js"></script>
     <script src="lib/proj4js-compressed.js"></script>
@@ -47,22 +76,31 @@
     <script>
       goog.require('ga_importwms');
       goog.require('ga_map');
-    </script>
-    <script>
+
       (function() {
         var module = angular.module('ga_importwms_example', [
           'ga_importwms',
           'ga_map'
         ]);
 
-        module.constant('gaGlobalOptions',
-                 {serviceUrl: 'http://mf-chsdi30t.bgdi.admin.ch',
-                  baseUrlPath: 'http://mf-geoadmin30t.bgdi.admin.ch/main' });
+        module.constant('gaGlobalOptions', {
+          serviceUrl: 'http://mf-chsdi3.dev.bgdi.ch'
+        });
         
+        module.config(['gaLayersProvider', function(gaLayersProvider) {
+          gaLayersProvider.wmtsGetTileUrlTemplate =
+              'http://wmts{0-4}.geo.admin.ch/1.0.0/{Layer}/default/' +
+              '{Time}/21781/{TileMatrix}/{TileRow}/{TileCol}.{Format}';
+
+          gaLayersProvider.layersConfigUrlTemplate =
+              'http://mf-chsdi3.dev.bgdi.ch/rest/services/{Topic}/MapServer/layersConfig' +
+              '?lang={Lang}';
+        }]);
+
         module.controller('MainController', ['$scope',
             'gaLayers', function($scope, gaLayers) {
 
-          var swissExtent = [485869.5728, 837076.5648, 76443.1884, 299941.7864];
+          var swissExtent = [485869.5728, 76443.1884, 837076.5648, 299941.7864];
           var swissProjection = ol.proj.configureProj4jsProjection({
             code: 'EPSG:21781',
             extent: swissExtent
@@ -94,13 +132,13 @@
           ['$scope', 'gaGlobalOptions',
            function($scope, gaGlobalOptions) {
              $scope.options = {  
-               proxyUrl: gaGlobalOptions.baseUrlPath + '/ogcproxy?url=',
+               proxyUrl: gaGlobalOptions.serviceUrl + '/ogcproxy?url=',
                defaultGetCapParams: 'SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0',
                defaultWMSList: [
                  'http://wms.geo.admin.ch/',
                  'http://ogc.heig-vd.ch/mapserver/wms?',
                  'http://www.wms.stadt-zuerich.ch/WMS-ZH-STZH-OGD/MapServer/WMSServer?',
-                 'http://geo.gl.ch/wms/Public?',
+                 'http://wms.geo.gl.ch/?',
                  'http://mapserver1.gr.ch/wms/admineinteilung?',
                  'http://mapserver1.gr.ch/wms/belastetestandorte?',
                  'http://mapserver1.gr.ch/wms/beweidbareflaechen?',

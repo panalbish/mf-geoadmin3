@@ -1,5 +1,6 @@
 (function() {
   goog.provide('ga_share_directive');
+
   goog.require('ga_permalink');
   goog.require('ga_urlutils_service');
 
@@ -9,8 +10,7 @@
   ]);
 
   module.directive('gaShare',
-      ['$http', 'gaPermalink', 'gaUrlUtils',
-        function($http, gaPermalink, gaUrlUtils) {
+      function($http, $window, gaPermalink, gaUrlUtils) {
           return {
             restrict: 'A',
             scope: {
@@ -22,13 +22,25 @@
                   'cb=JSON_CALLBACK');
               scope.qrcodegeneratorPath = scope.options.qrcodegeneratorPath;
 
-              $('.share-icon').tooltip({
+              $('.ga-share-icon').tooltip({
                 placement: 'bottom'
+              });
+              $('.ga-share-permalink input').on({
+                focus: function() {
+                  this.setSelectionRange(0, 9999);
+                },
+                mouseup: function(e) {
+                  // prevent unselection on blur
+                  e.preventDefault();
+                },
+                touchend: function(e) {
+                  // prevent unselection on blur
+                  e.preventDefault();
+                }
               });
               // Store in the scope the permalink value which is bound to
               // the input field
               scope.permalinkValue = gaPermalink.getHref();
-              scope.permalinkHref = gaPermalink.getHref();
               scope.encodedPermalinkHref =
                   encodeURIComponent(gaPermalink.getHref());
               scope.encodedDocumentTitle = encodeURIComponent(document.title);
@@ -37,7 +49,6 @@
               // Listen to permalink change events from the scope.
               scope.$on('gaPermalinkChange', function(event) {
                 scope.permalinkValue = gaPermalink.getHref();
-                scope.permalinkHref = gaPermalink.getHref();
                 scope.encodedPermalinkHref =
                     encodeURIComponent(gaPermalink.getHref());
                 scope.urlShortened = false;
@@ -61,7 +72,10 @@
               scope.selectOnClick = function(e) {
                 e.target.select();
               };
+
+              // Be able to disable some widgets on homescreen
+              scope.homescreen = $window.navigator.standalone;
             }
           };
-        }]);
+        });
 })();

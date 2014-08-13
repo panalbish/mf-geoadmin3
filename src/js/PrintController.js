@@ -4,40 +4,53 @@
   var module = angular.module('ga_print_controller', []);
 
   module.controller('GaPrintController',
-      ['$scope', '$http', function($scope, $http) {
-
-        var http = $http.get('info.json');  // FIXME
-        http.success(function(data, status, header, config) {
-          $scope.capabilities = data;
-
-          // default values:
-          $scope.layout = data.layouts[0];
-          $scope.dpi = data.dpis[0];
-
-          $scope.scale = data.scales[0];  // FIXME
+    function($scope, gaGlobalOptions) {
+      var printPath = gaGlobalOptions.mapUrl + '/print'
+      
+      $scope.options = {
+        printConfigUrl: printPath + '/info.json?url=' +
+            encodeURIComponent(printPath),
+        legendUrl: gaGlobalOptions.apiUrl + '/static/images/legends/',
+        qrcodeUrl: gaGlobalOptions.apiUrl + '/qrcodegenerator?url=',
+        shortenUrl: gaGlobalOptions.apiUrl + '/shorten.json?cb=JSON_CALLBACK',
+        markerUrl: gaGlobalOptions.resourceUrl + 'img/marker.png',
+        heightMargin: $('#header').height(),
+        widthMargin: $('#pulldown').width(),
+        // Hardcode listd of legends that should be downloaded in
+        // separate PDF instead of putting the image in the same
+        // PDF as the print (as in RE2). Note: We should avoid doing
+        // this as it feels hacky. We should create nice png what are
+        // usable in the pdf
+        pdfLegendList: [
+          'ch.astra.ivs-gelaendekarte',
+          'ch.astra.ausnahmetransportrouten',
+          'ch.bazl.luftfahrtkarten-icao',
+          'ch.bazl.segelflugkarte',
+          'ch.swisstopo.geologie-eiszeit-lgm-raster',
+          'ch.swisstopo.geologie-geologische_karte',
+          'ch.swisstopo.geologie-hydrogeologische_karte-grundwasservorkommen',
+          'ch.swisstopo.geologie-hydrogeologische_karte-grundwasservulnerabilitaet',
+          'ch.swisstopo.geologie-tektonische_karte',
+          'ch.kantone.cadastralwebmap-farbe',
+          'ch.swisstopo.pixelkarte-farbe-pk1000.noscale',
+          'ch.swisstopo.pixelkarte-farbe-pk500.noscale',
+          'ch.swisstopo.pixelkarte-farbe-pk200.noscale',
+          'ch.swisstopo.pixelkarte-farbe-pk100.noscale',
+          'ch.swisstopo.pixelkarte-farbe-pk50.noscale',
+          'ch.swisstopo.pixelkarte-farbe-pk25.noscale'
+        ]
+      };
+      
+      $('#print').on('show.bs.collapse', function() {
+        $scope.$apply(function() {
+          $scope.options.active = true;
         });
+      });
 
-        $scope.submit = function() {
-          // // http://mapfish.org/doc/print/protocol.html#print-pdf
-          // var view = this.map.getView();
-          // var proj = view.getProjection();
-          // var spec = {
-          //   layout: this.layout.name,
-          //   srs: proj.getCode(),
-          //   units: proj.getUnits(),
-          //   layers: [{
-          //   }],
-          //   pages: [{
-          //     center: view.getCenter(),
-          //     scale: this.scale.value,
-          //     dpi: this.dpi.value
-          //   }]
-          // };
-          // var http = $http.post(this.capabilities.createURL, spec);
-          // http.success(function() {
-          // });
-        };
-
-      }]);
-
+      $('#print').on('hide.bs.collapse', function() {
+        $scope.$apply(function() {
+          $scope.options.active = false;
+        });
+      });
+  });
 })();

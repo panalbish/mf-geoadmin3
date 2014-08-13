@@ -9,13 +9,13 @@
 
   module.provider('gaPopup', function() {
 
-    this.$get = ['$compile', '$rootScope', function($compile, $rootScope) {
+    this.$get = function($compile, $rootScope) {
 
-      var Popup = function(options, scope) {
+      var Popup = function(options) {
 
         // Create the popup element with its content to the HTML page
         var element = angular.element(
-          '<div ga-popup ' +
+          '<div ga-popup="toggle" ' +
                'ga-popup-options="options" ' +
                'ga-draggable=".ga-popup-title">' +
                options.content +
@@ -28,32 +28,32 @@
 
         // Pass some popup functions for clients to be used in content
         var popup = this;
-        options.open = function() {popup.open();};
-        options.close = function() {popup.close();};
-        options.destroy = function() {popup.destroy();};
+        options.close = function(evt) {
+          var onCloseCallback = popup.scope.options.onCloseCallback;
+          if (angular.isFunction(onCloseCallback)) {
+            onCloseCallback(this);
+          }
+        };
 
         // Create scope, compile and link
-        this.scope = (scope || $rootScope).$new();
+        this.scope = $rootScope.$new();
+        this.scope.toggle = false;
         this.scope.options = options;
         this.element = $compile(element)(this.scope);
-        this.destroyed = false;
 
         // Attach popup to body element
         $(document.body).append(this.element);
       };
 
-      Popup.prototype.open = function(scope) {
-        // Show the popup
-        this.element.show();
+      Popup.prototype.open = function() {
+        this.scope.toggle = true;
       };
 
       Popup.prototype.close = function() {
-        this.element.hide();
-
-        var destroyOnClose = this.scope.options.destroyOnClose;
-        if (destroyOnClose !== false) {
-          this.destroy();
-        }
+        var position = this.element.position();
+        this.scope.options.x = position.left;
+        this.scope.options.y = position.top;
+        this.scope.toggle = false;
       };
 
       Popup.prototype.destroy = function() {
@@ -61,14 +61,13 @@
         this.scope = null;
         this.element.remove();
         this.element = null;
-        this.destroyed = true;
-     };
+      };
 
       return {
         create: function(options) {
           return new Popup(options);
         }
       };
-    }];
+    };
   });
 })();

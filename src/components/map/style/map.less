@@ -1,95 +1,102 @@
-.map {
+@control-btn-small-size: 18;
+
+.zoom-mixin(@top) {
+  
+  .ol-zoom {
+    top: unit(@top + @control-btns-top + @control-btn-next, px);
+  }
+  
+  .ol-zoom-extent {
+    top: unit(@top + @control-btns-top + @control-btn-next + @control-btn-size * 2 + @control-btn-space * 2, px);
+  }
+}
+
+[ga-map] {
+  position: relative;
+  width: 100%;
+  height: 100%;
   background-color: #f9f9f9;
   background-image: data-uri('mapbg.png');
-}
-
-@tabletTop: 60;
-@zoomBarTop: 153;
-@zoomBarRight: 20;
-@zoomBarWidth: 18;
-@zoomBarHeight: 150;
-
-.ol-zoom, .ol-zoomslider {
-  position: absolute;
-  right: unit(@zoomBarRight, px);
-  width: unit(@zoomBarWidth, px);
-}
-.ol-zoomslider {
-  @media screen and (max-width: @screen-tablet) {
-    display: none;
+ 
+  button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    display: block; /*without this, chrome add 3 pixels between zoomin/out buttons*/
   }
-}
 
-.ol-zoom {
-  top: unit(@zoomBarTop, px);
-  height: unit(@zoomBarHeight + 34, px);
-}
-
-.ol-zoom-in, .ol-zoom-out {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-}
-
-.ol-zoom-in {
-  background-image: data-uri('zoom-plus-mini.png');
-}
-
-.ol-zoom-out {
-  background-image: data-uri('zoom-minus-mini.png');
-  bottom: 0;
-}
-@media screen and (max-width: @screen-tablet) {
-  .ol-zoom {
-    top: unit(@tabletTop + 50, px);
-    right: unit(@zoomBarRight - 13, px);
-    height: 94px;
-    width: 44px;
+  .ol-dragbox {
+    position:absolute;
+    border: 1px solid #2E2F2F;
+    background-color: rgba(255, 255, 255, 0.5);
   }
-  .ol-zoom-in, .ol-zoom-out {
-    width: 44px;
-    height: 44px;
-  }
+ 
   .ol-zoom-in {
     background-image: data-uri('zoomIn.png');
   }
-
+  
   .ol-zoom-out {
+    margin-top: unit(@control-btn-space, px);
     background-image: data-uri('zoomOut.png');
-    bottom: 0;
   }
-}
 
-.ol-zoomslider {
-  position: absolute;
-  top: unit(@zoomBarTop + 18, px);
-  height: unit(@zoomBarHeight, px);
-  /* step height: 11px */
-  background-image: data-uri('zoombar.png');
-}
+  .ol-zoom-extent button {
+    background-image: data-uri('zoomToFullExtent.png');
+  }
 
-.ol-zoomslider-thumb {
-  width: 20px;
-  height: 9px;
-  background-image: data-uri('slider.png');
-  margin-left: -1px;
-  display: block;
-  position: absolute;
-  padding: 0;
-  cursor: pointer;
-}
+  .ol-zoom {
+    width: unit(@control-btn-size, px);
+  }
 
-.ol-zoom-extent {
-  background-image: data-uri('zoomToFullExtent.png');
-  position: absolute;
-  top: unit(@zoomBarTop + @zoomBarHeight + 43, px);
-  right: unit(@zoomBarRight - 13, px);
+  .ol-zoom, .ol-zoom-extent {
+    position: absolute;
+    right: unit(@control-btns-right, px);
+  }
+
+  .ol-zoom-in, .ol-zoom-out, .ol-zoom-extent, .ol-zoom-extent button  {
+    width: unit(@control-btn-size, px);
+    height: unit(@control-btn-size, px);
+  }
+  
+  .zoom-mixin(@header-height);
+  
   @media screen and (max-width: @screen-tablet) {
-    top: unit(@tabletTop + 150, px);
+    .zoom-mixin(@small-header-height);
+  }
+
+  .ga-crosshair {
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+    margin-top: -8px;
+    
+    &.cross {
+      background-image: data-uri('ch_cross.png');
+    }
+ 
+    &.circle {
+      background-image: data-uri('ch_circle.png');
+    }
+ 
+    &.bowl {
+      background-image: data-uri('ch_bowl.png');
+    }
+
+    &.point {
+      width: 24px;
+      height: 24px;
+      margin-left: -12px;
+      margin-top: -12px;
+      background-image: data-uri('ch_point.png');
+    }
+
+    &.marker {
+      width: 30px;
+      height: 40px;
+      margin-left: -17px;
+      margin-top: -40px;
+      background-image: data-uri('marker.png');
+    }
   }
 }
-.ol-zoom-extent a {
-  width: 44px;
-  height: 44px;
-  display: block;
-}
+

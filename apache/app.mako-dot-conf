@@ -13,22 +13,48 @@ AddOutputFilterByType DEFLATE application/javascript
 AddOutputFilterByType DEFLATE application/xml
 AddOutputFilterByType DEFLATE application/json
 
-Alias ${base_url_path}/src ${base_dir}/src
-Alias ${base_url_path}/prod ${base_dir}/prod
+<IfModule mod_headers.c>
+  Header set X-UA-Compatible "IE=Edge"
+</IfModule>
+
+# Redirect no-slash target to slashed version
+RedirectMatch ^${apache_base_path}$ ${apache_base_path}/
+
+Alias ${apache_base_path}/src ${apache_base_directory}/src
+Alias ${apache_base_path}/ ${apache_base_directory}/prd/
 
 # Cached resources
-RewriteRule ^${base_url_path}/prod/[0-9]*/(.*)$ ${base_dir}/prod/$1
-<LocationMatch ${base_url_path}/prod/[0-9]*/>
+RewriteRule ^${apache_base_path}/[0-9]+/(img|lib|style|locales)(.*) ${apache_base_directory}/prd/$1$2
+<LocationMatch ^${apache_base_path}/[0-9]+/>
    ExpiresDefault "now plus 1 year"
    Header merge Cache-Control "public"
 </LocationMatch>
 
-# proxy
-ProxyPassMatch ${base_url_path}/(print|ogcproxy|feedback|qrcodegenerator)(.*) ${service_url}/$1$2
-ProxyPassReverse ${base_url_path} ${service_url}
+# Sitemaps (we are using version here to get a cached version from backend)
+RewriteRule ^${apache_base_path}/sitemap_(.*)\.xml http:${api_url}/${version}/sitemap?content=$1 [P]
 
-<LocationMatch ${base_url_path}/(print|ogcproxy|feedback|qrcodegenerator)>
+# We tell the public to not cache the response, even with
+# this, the versioned sitemap of the back-end _is_ cached
+# This assures that latest sitemaps is used after deploy
+<LocationMatch ^${apache_base_path}/sitemap_.*\.xml>
+    Order allow,deny
+    Allow from all
+    Header unset Cache-Control
+    Header merge Cache-Control "no-cache"
+</LocationMatch>
+
+# Proxy definitions
+ProxyPassMatch ^${apache_base_path}/print/(.*) http:${api_url}/print/$1
+<LocationMatch ^${apache_base_path}/print>
     Order allow,deny
     Allow from all
 </LocationMatch>
+
+# Checker definitions (never cache)
+<Location ~ "${apache_base_path}/checker$">
+    ExpiresDefault "access"
+    Header merge Cache-Control "no-cache"
+    Header unset ETag
+    Header unset Last-Modified
+</Location>
 
